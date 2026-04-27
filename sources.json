@@ -1248,5 +1248,15 @@
     "urlPattern": "^https?://(?:www\\.)?sarkariresult\\.com/20\\d{2}/[^/]+/?$",
     "notes": "Behind CloudFront WAF that 403s curl from GH Actions IPs. Trying Playwright (Chromium TLS fingerprint + browser headers) to see if it gets through.",
     "renderJs": true
+  },
+  {
+    "id": "freejobalert",
+    "name": "FreeJobAlert",
+    "url": "https://www.freejobalert.com/google-news-sitemap.xml",
+    "tier": 2,
+    "type": "sitemap",
+    "useCurl": true,
+    "urlPattern": "^https://www\\.freejobalert\\.com/articles/.+",
+    "notes": "Third-party aggregator. Fetched via Google News sitemap (flat list of recent articles). URL format: /articles/{slug}-{numeric-id}. Replaces sarkariresult.com which is unreachable from any datacenter (CloudFront WAF)."
   }
 ]
