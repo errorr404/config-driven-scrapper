@@ -241,6 +241,7 @@
     "excludePattern": "Cut-off|cutoff|cut_off",
     "useCurl": true,
     "insecureTls": true,
+    "disabled": true,
     "notes": "Disabled: CloudFront WAF blocks GitHub Actions runner IPs (HTTP 403). Origin works fine from Indian residential IPs locally. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
