@@ -66,6 +66,7 @@ async function fetchWithCurl(source: SourceConfig): Promise<string> {
     "--max-time", String(timeoutSec),
     "--max-redirs", "10",
     "--compressed",
+    "--fail-with-body", // 4xx/5xx becomes a non-zero curl exit, body still captured
   ];
   if (source.insecureTls) args.push("--insecure");
   if (source.method === "POST") args.push("--request", "POST");
