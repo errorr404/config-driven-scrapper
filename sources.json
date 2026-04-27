@@ -13,7 +13,6 @@
     "dateField": "createdAt",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -25,7 +24,6 @@
     "excludePattern": "/whats-new/?$",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -97,7 +95,6 @@
     "timeoutMs": 90000,
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -139,7 +136,6 @@
     "containerSelector": "main, #content, body",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -148,7 +144,9 @@
     "url": "https://kvsangathan.nic.in/en/administration/circulars/",
     "tier": 2,
     "containerSelector": "table.documents-table",
-    "urlPattern": "cdnbbsr\\.s3waas\\.gov\\.in/.+\\.pdf"
+    "urlPattern": "cdnbbsr\\.s3waas\\.gov\\.in/.+\\.pdf",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "esic",
@@ -182,7 +180,6 @@
     "urlPattern": "/sites/default/files/DSSSB/.+\\.pdf",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -201,7 +198,6 @@
     "containerSelector": "main, #content, body",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -234,7 +230,6 @@
     "excludePattern": "(CSR|policy|Policy|investor)",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -246,7 +241,6 @@
     "excludePattern": "Cut-off|cutoff|cut_off",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: CloudFront WAF blocks GitHub Actions runner IPs (HTTP 403). Origin works fine from Indian residential IPs locally. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -265,7 +259,6 @@
     "urlPattern": "careers\\.bhel\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/.+/login\\.html",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -283,7 +276,6 @@
     "insecureTls": true,
     "urlPattern": "rect\\.crpf\\.gov\\.in/Upload/Recruitment/.+\\.pdf",
     "useCurl": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -377,7 +369,6 @@
     "insecureTls": true,
     "urlPattern": "recruitment\\.itbpolice\\.nic\\.in/rect/noticeboards/downloadpdf/\\d+\\.pdf",
     "useCurl": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -420,7 +411,6 @@
     "urlPattern": "agnipathvayu\\.cdac\\.in/AV/img/.+\\.pdf",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -478,7 +468,6 @@
     "renderJs": true,
     "urlPattern": "afcat\\.cdac\\.in/AFCAT/assets/images/news/.+",
     "timeoutMs": 90000,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -544,7 +533,6 @@
     "urlPattern": "(rrbbnc\\.gov\\.in/notifications/.+\\.pdf|rrbbnc\\.gov\\.in/Notification/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
     "insecureTls": true,
     "useCurl": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -589,7 +577,6 @@
     "urlPattern": "(rrbjammu\\.nic\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -601,7 +588,6 @@
     "urlPattern": "(rrbmalda\\.gov\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
     "insecureTls": true,
     "useCurl": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -612,7 +598,6 @@
     "useCurl": true,
     "containerSelector": "main, #content, body",
     "urlPattern": "(rrbmuzaffarpur\\.gov\\.in/Portal/DownloadFile\\.aspx|digialm\\.com/EForms/configuredHtml/)",
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -624,7 +609,6 @@
     "urlPattern": "(rrbpatna\\.gov\\.in/Docs/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -644,7 +628,6 @@
     "urlPattern": "(rrbsecunderabad\\.gov\\.in/wp-content/uploads/.+\\.pdf|digialm\\.com/EForms/configuredHtml/|cdn\\d+\\.digialm\\.com/OnlineAssessment)",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -685,7 +668,6 @@
     "urlPattern": "(rrbgkp\\.gov\\.in/(notices|Notices|Noticenew|results|Results)/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -696,7 +678,6 @@
     "urlPattern": "joinindiannavy\\.gov\\.in/files/Advt-.+\\.pdf",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -728,7 +709,6 @@
     "titleFromUrl": true,
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -740,7 +720,6 @@
     "titleFromUrl": true,
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -792,7 +771,6 @@
     "titleFromUrl": true,
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -803,7 +781,6 @@
     "urlPattern": "gprb\\.gujarat\\.gov\\.in/advertisement-detail\\.htm\\?\\d+",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -821,7 +798,6 @@
     "urlPattern": "slprb\\.ap\\.gov\\.in/PDFS/.+\\.(pdf|PDF)",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -832,7 +808,6 @@
     "urlPattern": "Portals/0/.+\\.pdf",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -843,8 +818,8 @@
     "useCurl": true,
     "urlPattern": "/index\\.aspx\\?page=\\d+&tabid=10&tablinkid=\\d+",
     "timeoutMs": 90000,
-    "disabled": true,
-    "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
+    "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow.",
+    "insecureTls": true
   },
   {
     "id": "psssb",
@@ -854,8 +829,9 @@
     "useCurl": true,
     "urlPattern": "sssb\\.punjab\\.gov\\.in/wp-content/uploads/.+\\.pdf",
     "timeoutMs": 90000,
-    "disabled": true,
-    "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
+    "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow.",
+    "insecureTls": true,
+    "legacySsl": true
   },
   {
     "id": "wbpsc",
@@ -874,7 +850,6 @@
     "renderJs": true,
     "urlPattern": "AdvertisementsDetails\\?strdata=",
     "timeoutMs": 90000,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -903,7 +878,6 @@
     "timeoutMs": 90000,
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -914,7 +888,6 @@
     "urlPattern": "vyapamcg\\.cgstate\\.gov\\.in/uploads/(pdfs|menus/files)/.+\\.pdf",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -964,7 +937,6 @@
     "timeoutMs": 90000,
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -985,7 +957,6 @@
     "renderJs": true,
     "urlPattern": "CMSFileView\\?qs=",
     "timeoutMs": 90000,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -1006,7 +977,6 @@
     "urlPattern": "npsc\\.nagaland\\.gov\\.in/advertisement/\\d+",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: CloudFront WAF blocks GitHub Actions runner IPs (HTTP 403). Origin works fine from Indian residential IPs locally. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -1024,7 +994,6 @@
     "urlPattern": "tpsc\\.tripura\\.gov\\.in/sites/default/files/.+\\.pdf",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -1051,7 +1020,6 @@
     "urlPattern": "mpsc\\.mizoram\\.gov\\.in/uploads/attachments/.+\\.pdf",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: CloudFront WAF blocks GitHub Actions runner IPs (HTTP 403). Origin works fine from Indian residential IPs locally. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -1071,8 +1039,8 @@
     "useCurl": true,
     "urlPattern": "(advt_\\d{4}|notif_\\d{4}|misc_\\d{4})/.+\\.pdf",
     "timeoutMs": 90000,
-    "disabled": true,
-    "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
+    "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow.",
+    "insecureTls": true
   },
   {
     "id": "upsc-online",
@@ -1128,7 +1096,9 @@
     "url": "https://www.coalindia.in/career-cil/jobs-coal-india/",
     "tier": 3,
     "renderJs": true,
-    "urlPattern": "d3u7ubx0okog7j\\.cloudfront\\.net/documents/.+\\.pdf"
+    "urlPattern": "d3u7ubx0okog7j\\.cloudfront\\.net/documents/.+\\.pdf",
+    "disabled": true,
+    "notes": "Disabled: CloudFront WAF rejects all datacenter ASNs (AWS, Azure, GCP, Oracle Cloud) with HTTP 403. Only residential Indian ISP connections work. Use freejobalert as a substitute aggregator."
   },
   {
     "id": "nhpc",
@@ -1148,7 +1118,6 @@
     "urlPattern": "powergrid\\.in/sites/default/files/job_opportunities_document/.+\\.pdf",
     "useCurl": true,
     "insecureTls": true,
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -1192,7 +1161,6 @@
     "useCurl": true,
     "insecureTls": true,
     "urlPattern": "pdf/announcement/vacancies/.+\\.pdf",
-    "disabled": true,
     "notes": "Disabled: consistently fails from GitHub Actions runner IPs (US/EU egress) — server returns TCP timeout, connection refused, connection reset, or SSL legacy renegotiation refusal. Works fine from Indian residential IPs. Re-enable when running from an Indian-IP cron (local launchd, Oracle Cloud Mumbai, Cloud Run asia-south1) or when a working proxy is wired into the workflow."
   },
   {
@@ -1201,7 +1169,9 @@
     "url": "https://www.ugc.gov.in/Tenders/Jobs",
     "tier": 2,
     "renderJs": true,
-    "urlPattern": "/pdfnews/\\d+_.+\\.pdf"
+    "urlPattern": "/pdfnews/\\d+_.+\\.pdf",
+    "disabled": true,
+    "notes": "Disabled: CloudFront WAF rejects all datacenter ASNs (AWS, Azure, GCP, Oracle Cloud) with HTTP 403. Only residential Indian ISP connections work. Use freejobalert as a substitute aggregator."
   },
   {
     "id": "aicte",
@@ -1246,8 +1216,9 @@
     "tier": 2,
     "type": "sitemap",
     "urlPattern": "^https?://(?:www\\.)?sarkariresult\\.com/20\\d{2}/[^/]+/?$",
-    "notes": "Behind CloudFront WAF that 403s curl from GH Actions IPs. Trying Playwright (Chromium TLS fingerprint + browser headers) to see if it gets through.",
-    "renderJs": true
+    "notes": "Disabled: CloudFront WAF rejects all datacenter ASNs (AWS, Azure, GCP, Oracle Cloud) with HTTP 403. Only residential Indian ISP connections work. Use freejobalert as a substitute aggregator.",
+    "renderJs": true,
+    "disabled": true
   },
   {
     "id": "freejobalert",
