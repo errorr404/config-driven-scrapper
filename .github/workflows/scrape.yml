@@ -45,10 +45,46 @@ jobs:
           restore-keys: |
             scraper-state-
 
+      - name: Pick a working Indian HTTP proxy
+        id: pick_proxy
+        run: |
+          set -uo pipefail
+          LIST_URL="https://cdn.jsdelivr.net/gh/proxifly/free-proxy-list@main/proxies/countries/IN/data.txt"
+          echo "Fetching India proxy list..."
+          curl -fsS --max-time 15 "$LIST_URL" -o /tmp/proxies.txt || {
+            echo "::warning::Could not fetch proxy list — sources flagged viaProxy will fall back to direct"
+            echo "PROXY_URL=" >> "$GITHUB_ENV"; exit 0
+          }
+          # Keep only http:// entries; cap iterations so we don't spend forever on dead proxies.
+          grep -E '^http://' /tmp/proxies.txt | head -n 30 > /tmp/candidates.txt
+          echo "Testing $(wc -l </tmp/candidates.txt) candidates against ifconfig.me…"
+          PICK=""
+          while read -r p; do
+            [ -z "$p" ] && continue
+            ip=$(curl -sS --proxy "$p" --proxy-insecure --max-time 6 "https://ifconfig.me" 2>/dev/null || true)
+            if [ -n "$ip" ]; then
+              echo "  ✓ $p → $ip"
+              PICK="$p"
+              break
+            else
+              echo "  ✗ $p"
+            fi
+          done < /tmp/candidates.txt
+          if [ -z "$PICK" ]; then
+            echo "::warning::No working proxy found — viaProxy sources will fall back to direct"
+            echo "PROXY_URL=" >> "$GITHUB_ENV"
+          else
+            echo "PROXY_URL=$PICK" >> "$GITHUB_ENV"
+            # Geo-confirm
+            echo "Picked proxy → $PICK"
+            curl -sS --proxy "$PICK" --proxy-insecure --max-time 8 "https://ipinfo.io/json" || true
+          fi
+
       - name: Run scraper
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PROXY_URL: ${{ env.PROXY_URL }}
         run: npm start
 
       - name: Save scraper state
