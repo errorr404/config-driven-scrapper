@@ -1,4 +1,4 @@
-import { Agent, ProxyAgent } from "undici";
+import { Agent } from "undici";
 import { spawn } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
@@ -6,24 +6,6 @@ import path from "node:path";
 import type { SourceConfig } from "./types.js";
 
 const insecureAgent = new Agent({ connect: { rejectUnauthorized: false } });
-
-// Sources flagged viaProxy: true are routed through PROXY_URL (set by the
-// workflow after picking a working entry from a free Indian-proxy list).
-// If PROXY_URL is unset or empty, fall back to direct egress — better to
-// retry direct than skip the source entirely.
-function effectiveProxyUrl(source: SourceConfig): string | undefined {
-  if (!source.viaProxy) return undefined;
-  const url = (process.env.PROXY_URL ?? "").trim();
-  return url || undefined;
-}
-
-let proxyAgentCache: { url: string; agent: ProxyAgent } | null = null;
-function getProxyAgent(url: string): ProxyAgent {
-  if (proxyAgentCache && proxyAgentCache.url === url) return proxyAgentCache.agent;
-  const agent = new ProxyAgent({ uri: url, requestTls: { rejectUnauthorized: false } });
-  proxyAgentCache = { url, agent };
-  return agent;
-}
 
 // Some govt sites (e.g. psc.uk.gov.in) only negotiate via legacy TLS renegotiation,
 // which OpenSSL 3.x rejects by default ("unsafe legacy renegotiation disabled").
@@ -80,11 +62,6 @@ async function fetchWithCurl(source: SourceConfig): Promise<string> {
     "--compressed",
   ];
   if (source.insecureTls) args.push("--insecure");
-  const proxyUrl = effectiveProxyUrl(source);
-  if (proxyUrl) {
-    args.push("--proxy", proxyUrl);
-    args.push("--proxy-insecure"); // free public proxies often have invalid TLS
-  }
   if (source.method === "POST") args.push("--request", "POST");
   for (const [k, v] of Object.entries(headers)) {
     args.push("-H", `${k}: ${v}`);
@@ -126,12 +103,7 @@ async function fetchWithHttp(source: SourceConfig): Promise<string> {
     headers,
     signal: AbortSignal.timeout(timeout),
   };
-  const proxyUrl = effectiveProxyUrl(source);
-  if (proxyUrl) {
-    opts.dispatcher = getProxyAgent(proxyUrl);
-  } else if (source.insecureTls) {
-    opts.dispatcher = insecureAgent;
-  }
+  if (source.insecureTls) opts.dispatcher = insecureAgent;
   const res = await fetch(source.url, opts);
   if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
   return res.text();
@@ -158,10 +130,7 @@ async function getBrowser(): Promise<any> {
 
 async function fetchWithPlaywright(source: SourceConfig): Promise<string> {
   const browser = await getBrowser();
-  const proxyUrl = effectiveProxyUrl(source);
-  const ctxOpts: Record<string, unknown> = { userAgent: USER_AGENT };
-  if (proxyUrl) ctxOpts.proxy = { server: proxyUrl };
-  const ctx = await browser.newContext(ctxOpts);
+  const ctx = await browser.newContext({ userAgent: USER_AGENT });
   // We only need the DOM to extract anchors — block visual subresources to keep
   // domcontentloaded from blocking on slow CDN images/fonts/CSS on flaky govt servers.
   await ctx.route("**/*", (route) => {

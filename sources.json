@@ -12,8 +12,7 @@
     "linkPrefix": "https://ssc.gov.in/",
     "dateField": "createdAt",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "upsc",
@@ -23,8 +22,7 @@
     "urlPattern": "/whats-new/.+",
     "excludePattern": "/whats-new/?$",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "ibps",
@@ -67,8 +65,7 @@
     "timeoutMs": 90000,
     "containerSelector": "main, #content, table, body",
     "urlPattern": "(rrbcdg\\.gov\\.in/uploads/\\d{4}/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
-    "notes": "Upstream is flaky and slow (responses range 32s–60s+, sometimes outright timeouts). Playwright's Chromium stack hangs on this host even at 90s — curl is the only reliable path. Static HTML already contains the digialm.com form links, no JS hydration needed.",
-    "viaProxy": true
+    "notes": "Upstream is flaky and slow (responses range 32s–60s+, sometimes outright timeouts). Playwright's Chromium stack hangs on this host even at 90s — curl is the only reliable path. Static HTML already contains the digialm.com form links, no JS hydration needed."
   },
   {
     "id": "lic",
@@ -95,8 +92,7 @@
     "urlPattern": "Static/RecruitmentAdvertisements/[A-F0-9]+\\.pdf",
     "timeoutMs": 90000,
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "rsmssb",
@@ -136,8 +132,7 @@
     "tier": 2,
     "containerSelector": "main, #content, body",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "kvs",
@@ -178,8 +173,7 @@
     "tier": 2,
     "urlPattern": "/sites/default/files/DSSSB/.+\\.pdf",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "rbi",
@@ -196,8 +190,7 @@
     "tier": 2,
     "containerSelector": "main, #content, body",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "isro",
@@ -228,8 +221,7 @@
     "urlPattern": "ongcindia\\.com/documents/.+\\.pdf",
     "excludePattern": "(CSR|policy|Policy|investor)",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "ntpc",
@@ -256,8 +248,7 @@
     "tier": 3,
     "urlPattern": "careers\\.bhel\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/.+/login\\.html",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "nta",
@@ -273,8 +264,7 @@
     "tier": 1,
     "insecureTls": true,
     "urlPattern": "rect\\.crpf\\.gov\\.in/Upload/Recruitment/.+\\.pdf",
-    "useCurl": true,
-    "viaProxy": true
+    "useCurl": true
   },
   {
     "id": "nvs",
@@ -366,8 +356,7 @@
     "tier": 1,
     "insecureTls": true,
     "urlPattern": "recruitment\\.itbpolice\\.nic\\.in/rect/noticeboards/downloadpdf/\\d+\\.pdf",
-    "useCurl": true,
-    "viaProxy": true
+    "useCurl": true
   },
   {
     "id": "aiims-delhi",
@@ -408,8 +397,7 @@
     "tier": 1,
     "urlPattern": "agnipathvayu\\.cdac\\.in/AV/img/.+\\.pdf",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "csbc",
@@ -465,8 +453,7 @@
     "tier": 2,
     "renderJs": true,
     "urlPattern": "afcat\\.cdac\\.in/AFCAT/assets/images/news/.+",
-    "timeoutMs": 90000,
-    "viaProxy": true
+    "timeoutMs": 90000
   },
   {
     "id": "hal",
@@ -530,8 +517,7 @@
     "containerSelector": "main, #content, body",
     "urlPattern": "(rrbbnc\\.gov\\.in/notifications/.+\\.pdf|rrbbnc\\.gov\\.in/Notification/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
     "insecureTls": true,
-    "useCurl": true,
-    "viaProxy": true
+    "useCurl": true
   },
   {
     "id": "rrb-bpl",
@@ -574,8 +560,7 @@
     "containerSelector": "main, #content, body",
     "urlPattern": "(rrbjammu\\.nic\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "rrb-mld",
@@ -585,8 +570,7 @@
     "containerSelector": "main, #content, body",
     "urlPattern": "(rrbmalda\\.gov\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
     "insecureTls": true,
-    "useCurl": true,
-    "viaProxy": true
+    "useCurl": true
   },
   {
     "id": "rrb-mfp",
@@ -595,8 +579,7 @@
     "tier": 1,
     "useCurl": true,
     "containerSelector": "main, #content, body",
-    "urlPattern": "(rrbmuzaffarpur\\.gov\\.in/Portal/DownloadFile\\.aspx|digialm\\.com/EForms/configuredHtml/)",
-    "viaProxy": true
+    "urlPattern": "(rrbmuzaffarpur\\.gov\\.in/Portal/DownloadFile\\.aspx|digialm\\.com/EForms/configuredHtml/)"
   },
   {
     "id": "rrb-pat",
@@ -606,8 +589,7 @@
     "containerSelector": "main, #content, body",
     "urlPattern": "(rrbpatna\\.gov\\.in/Docs/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "rrb-rnc",
@@ -625,8 +607,7 @@
     "containerSelector": "main, #content, body",
     "urlPattern": "(rrbsecunderabad\\.gov\\.in/wp-content/uploads/.+\\.pdf|digialm\\.com/EForms/configuredHtml/|cdn\\d+\\.digialm\\.com/OnlineAssessment)",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "rrb-sgu",
@@ -665,8 +646,7 @@
     "containerSelector": "main, #content, body",
     "urlPattern": "(rrbgkp\\.gov\\.in/(notices|Notices|Noticenew|results|Results)/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "indian-navy",
@@ -675,8 +655,7 @@
     "tier": 1,
     "urlPattern": "joinindiannavy\\.gov\\.in/files/Advt-.+\\.pdf",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "ssb",
@@ -706,8 +685,7 @@
     "urlPattern": "joinindiancoastguard\\.cdac\\.in/cgept/assets/img/news/.+\\.pdf",
     "titleFromUrl": true,
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "icg-cgcat",
@@ -717,8 +695,7 @@
     "urlPattern": "joinindiancoastguard\\.cdac\\.in/cgcat/assets/img/news/.+\\.pdf",
     "titleFromUrl": true,
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "assam-rifles",
@@ -768,8 +745,7 @@
     "urlPattern": "tnusrb\\.tn\\.gov\\.in/pdfs/(Notification|JR|CR|Open|Dept|Common|Police|Fire|Annual|Syllabus|FAQ).+\\.pdf",
     "titleFromUrl": true,
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "guj-police",
@@ -778,8 +754,7 @@
     "tier": 1,
     "urlPattern": "gprb\\.gujarat\\.gov\\.in/advertisement-detail\\.htm\\?\\d+",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "ts-police",
@@ -795,8 +770,7 @@
     "tier": 1,
     "urlPattern": "slprb\\.ap\\.gov\\.in/PDFS/.+\\.(pdf|PDF)",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "hpsc",
@@ -805,8 +779,7 @@
     "tier": 2,
     "urlPattern": "Portals/0/.+\\.pdf",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "ppsc",
@@ -815,8 +788,7 @@
     "tier": 2,
     "useCurl": true,
     "urlPattern": "/index\\.aspx\\?page=\\d+&tabid=10&tablinkid=\\d+",
-    "timeoutMs": 90000,
-    "viaProxy": true
+    "timeoutMs": 90000
   },
   {
     "id": "psssb",
@@ -825,8 +797,7 @@
     "tier": 2,
     "useCurl": true,
     "urlPattern": "sssb\\.punjab\\.gov\\.in/wp-content/uploads/.+\\.pdf",
-    "timeoutMs": 90000,
-    "viaProxy": true
+    "timeoutMs": 90000
   },
   {
     "id": "wbpsc",
@@ -844,8 +815,7 @@
     "tier": 2,
     "renderJs": true,
     "urlPattern": "AdvertisementsDetails\\?strdata=",
-    "timeoutMs": 90000,
-    "viaProxy": true
+    "timeoutMs": 90000
   },
   {
     "id": "osssc",
@@ -872,8 +842,7 @@
     "excludePattern": "/notices/(advertisements|other-notices)$",
     "timeoutMs": 90000,
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "cg-vyapam",
@@ -882,8 +851,7 @@
     "tier": 2,
     "urlPattern": "vyapamcg\\.cgstate\\.gov\\.in/uploads/(pdfs|menus/files)/.+\\.pdf",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "uksssc",
@@ -931,8 +899,7 @@
     "urlPattern": "PDFs/advertisement/.+\\.pdf",
     "timeoutMs": 90000,
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "ukpsc",
@@ -951,8 +918,7 @@
     "tier": 2,
     "renderJs": true,
     "urlPattern": "CMSFileView\\?qs=",
-    "timeoutMs": 90000,
-    "viaProxy": true
+    "timeoutMs": 90000
   },
   {
     "id": "manipur-psc",
@@ -971,8 +937,7 @@
     "tier": 2,
     "urlPattern": "npsc\\.nagaland\\.gov\\.in/advertisement/\\d+",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "meghalaya-psc",
@@ -988,8 +953,7 @@
     "tier": 2,
     "urlPattern": "tpsc\\.tripura\\.gov\\.in/sites/default/files/.+\\.pdf",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "arunachal-psc",
@@ -1032,8 +996,7 @@
     "tier": 2,
     "useCurl": true,
     "urlPattern": "(advt_\\d{4}|notif_\\d{4}|misc_\\d{4})/.+\\.pdf",
-    "timeoutMs": 90000,
-    "viaProxy": true
+    "timeoutMs": 90000
   },
   {
     "id": "upsc-online",
@@ -1108,8 +1071,7 @@
     "tier": 3,
     "urlPattern": "powergrid\\.in/sites/default/files/job_opportunities_document/.+\\.pdf",
     "useCurl": true,
-    "insecureTls": true,
-    "viaProxy": true
+    "insecureTls": true
   },
   {
     "id": "bsnl",
@@ -1151,8 +1113,7 @@
     "tier": 2,
     "useCurl": true,
     "insecureTls": true,
-    "urlPattern": "pdf/announcement/vacancies/.+\\.pdf",
-    "viaProxy": true
+    "urlPattern": "pdf/announcement/vacancies/.+\\.pdf"
   },
   {
     "id": "ugc",
