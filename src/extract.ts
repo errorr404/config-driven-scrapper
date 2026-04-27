@@ -1,9 +1,11 @@
 import { load } from "cheerio";
 import type { SourceConfig, SeenLink } from "./types.js";
 import { extractJsonItems } from "./extract-json.js";
+import { extractSitemapItems } from "./extract-sitemap.js";
 
 export function extract(payload: string, source: SourceConfig): SeenLink[] {
   if (source.type === "json") return extractJsonItems(payload, source);
+  if (source.type === "sitemap") return extractSitemapItems(payload, source);
   return extractLinks(payload, source);
 }
 

@@ -1080,5 +1080,15 @@
     "renderJs": true,
     "urlPattern": "writereaddata/\\d+\\.pdf",
     "notes": "Aggregator: Employment News re-publishes weekly recruitment ads from many central govt sources. High coverage but high redundancy with already-monitored sources."
+  },
+  {
+    "id": "sarkari-result",
+    "name": "Sarkari Result",
+    "url": "https://www.sarkariresult.com/sitemap.xml",
+    "tier": 2,
+    "type": "sitemap",
+    "useCurl": true,
+    "urlPattern": "^https://www\\.sarkariresult\\.com/20\\d{2}/[^/]+/?$",
+    "notes": "Third-party aggregator (not an official govt site). Fetched via sitemap.xml; we keep only year-prefixed slugs (/{YYYY}/{slug}/) which correspond to actual posting pages and drop pagination/category routes. Bootstraps ~1500 historical entries; new postings notify thereafter."
   }
 ]

@@ -1,4 +1,4 @@
-export type SourceType = "html" | "json";
+export type SourceType = "html" | "json" | "sitemap";
 
 export interface SourceConfig {
   id: string;
