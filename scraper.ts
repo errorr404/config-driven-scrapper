@@ -39,6 +39,14 @@ async function checkSource(source: SourceConfig, state: State): Promise<CheckRes
   try {
     const html = await fetchPage(source);
     const links = extract(html, source);
+    // Diagnostic: when a fetch succeeds but yields 0 links, the response was either
+    // a server stub or the urlPattern doesn't match what came back. Log size + a
+    // small head/tail so we can tell which without bringing the whole body home.
+    if (links.length === 0) {
+      const head = html.slice(0, 160).replace(/\s+/g, " ").trim();
+      const tail = html.slice(-120).replace(/\s+/g, " ").trim();
+      console.log(`    ↳ [${source.id}] 0 links from ${html.length}B body. head="${head}" tail="${tail}"`);
+    }
     const prevState = state[source.id];
     const isFirstRun = !prevState;
     const now = new Date().toISOString();
