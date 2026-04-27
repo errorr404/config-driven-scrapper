@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "ssc",
+    "name": "SSC",
+    "url": "https://ssc.gov.in/api/general-website/portal/notice-boards?page=1&limit=20&contentType=notice-boards&key=createdAt&order=DESC&isAttachment=true&language=english&attributes=id,headline,examId,contentType,redirectUrl,startDate,endDate,language,createdAt",
+    "tier": 1,
+    "type": "json",
+    "itemsPath": "data",
+    "idField": "id",
+    "titleField": "headline",
+    "linkField": "attachments.0.path",
+    "linkPrefix": "https://ssc.gov.in/",
+    "dateField": "createdAt"
+  },
+  {
+    "id": "upsc",
+    "name": "UPSC",
+    "url": "https://upsc.gov.in/whats-new",
+    "tier": 1,
+    "urlPattern": "/whats-new/.+",
+    "excludePattern": "/whats-new/?$"
+  },
+  {
+    "id": "ibps",
+    "name": "IBPS",
+    "url": "https://www.ibps.in/",
+    "tier": 1,
+    "insecureTls": true,
+    "urlPattern": "ibpsreg\\.ibps\\.in/[a-z0-9]+/?$"
+  },
+  {
+    "id": "bpsc",
+    "name": "BPSC",
+    "url": "https://bpsc.bihar.gov.in/",
+    "tier": 1,
+    "insecureTls": true,
+    "urlPattern": "/wp-content/uploads/BPSC_content/(Notices|Advts|Advertisements)/.+\\.pdf"
+  },
+  {
+    "id": "uppsc",
+    "name": "UPPSC",
+    "url": "https://uppsc.up.nic.in/Default.aspx",
+    "tier": 1,
+    "containerSelector": "#ctl00_MainContent_Div_Whats_New",
+    "urlPattern": "Open_PDF(_DB)?\\.aspx\\?"
+  },
+  {
+    "id": "indian-army",
+    "name": "Indian Army (Agniveer)",
+    "url": "https://joinindianarmy.nic.in/",
+    "tier": 1,
+    "disabled": true,
+    "notes": "joinindianarmy.nic.in returns the same 3.4 KB fallback for every public URL \u2014 fully auth-walled. indianarmy.nic.in/career/* pages are informational text only (no PDFs or notifications). PIB Defence RSS is broken (returns ErrorPage). Track via Twitter @adgpi, Employment News print/digital, or wait for an official public listing."
+  },
+  {
+    "id": "rrb-cdg",
+    "name": "RRB Chandigarh",
+    "url": "https://www.rrbcdg.gov.in/employment-notices.php",
+    "tier": 1,
+    "renderJs": true,
+    "containerSelector": "main, #content, table, body",
+    "urlPattern": "(rrbcdg\\.gov\\.in/uploads/\\d{4}/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)"
+  },
+  {
+    "id": "lic",
+    "name": "LIC Careers",
+    "url": "https://licindia.in/web/guest/careers",
+    "tier": 1,
+    "containerSelector": "main, #content, body"
+  },
+  {
+    "id": "sbi",
+    "name": "SBI Careers",
+    "url": "https://sbi.co.in/web/careers/current-openings",
+    "tier": 1,
+    "urlPattern": "sbi\\.co\\.in/documents/77530/.+\\.pdf",
+    "excludePattern": "(BIODATA|Scribe|Declaration|How_To_Apply|How\\+to\\+Apply|CTC_Negotiation|CTC\\+Negotiation|IH_English|IH_Hindi|IH\\+English|IH\\+Hindi)"
+  },
+  {
+    "id": "rpsc",
+    "name": "RPSC",
+    "url": "https://rpsc.rajasthan.gov.in/advertisements",
+    "tier": 1,
+    "renderJs": true,
+    "urlPattern": "Static/RecruitmentAdvertisements/[A-F0-9]+\\.pdf"
+  },
+  {
+    "id": "rsmssb",
+    "name": "RSMSSB / RSSB",
+    "url": "https://rsmssb.rajasthan.gov.in/page?menuName=EJwE/Y7GD1hMok0YfKTFOtUJMJFGLBa;455611;jbRgWtRe9q4=",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "/link_to_external_file/.+\\.pdf"
+  },
+  {
+    "id": "tnpsc",
+    "name": "TNPSC",
+    "url": "https://www.tnpsc.gov.in/",
+    "tier": 2,
+    "disabled": true,
+    "notes": "TNPSC's homepage HTML wraps all current recruitment items inside non-standard <!--- HTML comments, hiding them from cheerio AND browsers. Site appears intentionally minimised. Re-enable when their CMS publishes notifications normally."
+  },
+  {
+    "id": "kerala-psc",
+    "name": "Kerala PSC",
+    "url": "https://www.keralapsc.gov.in/notifications",
+    "tier": 2,
+    "containerSelector": "main, #content, body"
+  },
+  {
+    "id": "mpsc",
+    "name": "MPSC (Maharashtra)",
+    "url": "https://mpsc.gov.in/adv_notification/8",
+    "tier": 2,
+    "disabled": true,
+    "notes": "MPSC actively encrypts API responses (getcontentdata/8 returns base64 ciphertext) and renders decrypted content in a way that doesn't expose anchors even after 15s Playwright wait. Genuinely scrape-resistant. Workaround: monitor Maharashtra Employment News or commercial aggregators for MPSC."
+  },
+  {
+    "id": "gpsc",
+    "name": "GPSC",
+    "url": "https://gpsc.gujarat.gov.in/",
+    "tier": 2,
+    "containerSelector": "main, #content, body"
+  },
+  {
+    "id": "kvs",
+    "name": "KVS",
+    "url": "https://kvsangathan.nic.in/en/administration/circulars/",
+    "tier": 2,
+    "containerSelector": "table.documents-table",
+    "urlPattern": "cdnbbsr\\.s3waas\\.gov\\.in/.+\\.pdf"
+  },
+  {
+    "id": "esic",
+    "name": "ESIC",
+    "url": "https://esic.gov.in/recruitments",
+    "tier": 2,
+    "useCurl": true,
+    "urlPattern": "/attachments/recruitmentfile/.+\\.pdf"
+  },
+  {
+    "id": "epfo",
+    "name": "EPFO",
+    "url": "https://www.epfindia.gov.in/site_en/Recruitments.php",
+    "tier": 2,
+    "urlPattern": "(digialm\\.com/EForms/configuredHtml/.+/login\\.html|tcsion\\.com/OnlineAssessment|recruitment\\.nta\\.nic\\.in|/site_docs/PDFs/Recruitments_PDFs/)"
+  },
+  {
+    "id": "fci",
+    "name": "FCI",
+    "url": "https://fci.gov.in/recruitment.php",
+    "tier": 2,
+    "renderJs": true,
+    "containerSelector": "main, #content, table, body"
+  },
+  {
+    "id": "dsssb",
+    "name": "DSSSB",
+    "url": "https://dsssb.delhi.gov.in/circulars-orders-notifications/news",
+    "tier": 2,
+    "urlPattern": "/sites/default/files/DSSSB/.+\\.pdf"
+  },
+  {
+    "id": "rbi",
+    "name": "RBI",
+    "url": "https://opportunities.rbi.org.in/Scripts/Vacancies.aspx",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "bs_viewcontent\\.aspx\\?Id=\\d+"
+  },
+  {
+    "id": "nabard",
+    "name": "NABARD",
+    "url": "https://www.nabard.org/careernotices.aspx",
+    "tier": 2,
+    "containerSelector": "main, #content, body"
+  },
+  {
+    "id": "isro",
+    "name": "ISRO",
+    "url": "https://www.isro.gov.in/Careers.html",
+    "tier": 2,
+    "containerSelector": "main, #content, body"
+  },
+  {
+    "id": "drdo",
+    "name": "DRDO",
+    "url": "https://www.drdo.gov.in/drdo/en/offerings/vacancies",
+    "tier": 2,
+    "containerSelector": "main, #content, body"
+  },
+  {
+    "id": "barc",
+    "name": "BARC",
+    "url": "https://www.barc.gov.in/careers/index.html",
+    "tier": 3,
+    "containerSelector": "main, #content, body"
+  },
+  {
+    "id": "ongc",
+    "name": "ONGC",
+    "url": "https://ongcindia.com/web/eng/career/recruitment-notice",
+    "tier": 3,
+    "urlPattern": "ongcindia\\.com/documents/.+\\.pdf",
+    "excludePattern": "(CSR|policy|Policy|investor)"
+  },
+  {
+    "id": "ntpc",
+    "name": "NTPC",
+    "url": "https://careers.ntpc.co.in/recruitment/",
+    "tier": 3,
+    "urlPattern": "(careers\\.ntpc\\.co\\.in/recruitment/(advertisements|schedules|results)/|pdf_viewer\\.php\\?token=)",
+    "excludePattern": "Cut-off|cutoff|cut_off"
+  },
+  {
+    "id": "iocl",
+    "name": "IOCL",
+    "url": "https://iocl.com/latest-job-opening",
+    "tier": 3,
+    "renderJs": true,
+    "urlPattern": "(iocl\\.com/admin/img/UploadedFiles/LatestJobOpening/|ibpsreg\\.ibps\\.in/iocl|ibpsonline\\.ibps\\.in/iocl)"
+  },
+  {
+    "id": "bhel",
+    "name": "BHEL Careers",
+    "url": "https://careers.bhel.in/index.jsp",
+    "tier": 3,
+    "urlPattern": "careers\\.bhel\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/.+/login\\.html"
+  },
+  {
+    "id": "nta",
+    "name": "NTA",
+    "url": "https://www.nta.ac.in/NoticeBoardArchive",
+    "tier": 2,
+    "urlPattern": "nta\\.ac\\.in/Download/Notice/.+\\.pdf"
+  },
+  {
+    "id": "crpf",
+    "name": "CRPF",
+    "url": "https://rect.crpf.gov.in",
+    "tier": 1,
+    "insecureTls": true,
+    "urlPattern": "rect\\.crpf\\.gov\\.in/Upload/Recruitment/.+\\.pdf"
+  },
+  {
+    "id": "nvs",
+    "name": "NVS (Navodaya)",
+    "url": "https://navodaya.gov.in/nvs/en/Recruitment/Notification-Vacancies/",
+    "tier": 2,
+    "renderJs": true,
+    "disabled": true,
+    "notes": "NVS Recruitment/Notification-Vacancies page renders 0 useful PDF anchors after Playwright + 5s wait. Page appears to load notifications via further interaction. Re-investigate by inspecting DOM structure for tab-clicks or a deeper sub-route."
+  },
+  {
+    "id": "cbse",
+    "name": "CBSE / CTET",
+    "url": "https://www.cbse.gov.in/cbsenew/recruitment.html",
+    "tier": 2,
+    "urlPattern": "cbse\\.gov\\.in/cbsenew/documents/+.+\\.pdf"
+  },
+  {
+    "id": "upsssc",
+    "name": "UPSSSC",
+    "url": "https://upsssc.gov.in/AllNotifications.aspx",
+    "tier": 1,
+    "renderJs": true,
+    "disabled": true,
+    "notes": "UPSSSC's notification listing has each notice as <a href='AllNotifications.aspx' title='<full-text>'> \u2014 same href for every notice, with the unique title in the title attribute. Engine currently dedupes by href, so all notices collapse to one entry. Needs a 'dedupe by aria-label/title attribute' option to onboard."
+  },
+  {
+    "id": "mppsc",
+    "name": "MPPSC",
+    "url": "https://mppsc.mp.gov.in/Advertisement",
+    "tier": 1,
+    "renderJs": true,
+    "urlPattern": "mppsc\\.mp\\.gov\\.in/uploads/advertisement/.+\\.pdf",
+    "titleFromUrl": true
+  },
+  {
+    "id": "hssc",
+    "name": "HSSC",
+    "url": "https://hssc.gov.in/search?site=hssc&section=advertisements&searchTxt=&page=1",
+    "tier": 1,
+    "type": "json",
+    "itemsPath": "data",
+    "idField": "id",
+    "titleField": [
+      "title",
+      "advtNo"
+    ],
+    "linkField": "id",
+    "linkPrefix": "https://hssc.gov.in/file/",
+    "linkSuffix": "/advertisements",
+    "dateField": "published_on"
+  },
+  {
+    "id": "aiims",
+    "name": "AIIMS Exams",
+    "url": "https://www.aiimsexams.ac.in/landingpage/courses/68dbbb27b7b096817673976e",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "rrpdocuments\\.aiimsexams\\.ac\\.in/.+\\.pdf",
+    "stripQuery": true
+  },
+  {
+    "id": "gail",
+    "name": "GAIL",
+    "url": "https://www.gailonline.com/CRApplyingGail.html",
+    "tier": 3,
+    "urlPattern": "gailonline\\.com/careers/currentOpnning/.+\\.pdf"
+  },
+  {
+    "id": "bsf",
+    "name": "BSF",
+    "url": "https://rectt.bsf.gov.in",
+    "tier": 1,
+    "disabled": true,
+    "notes": "BSF wraps all 15 recruitment PDF anchors inside <!-- HTML comments --> (balanced 16/16). Browsers and cheerio both treat them as comments \u2014 same issue as TNPSC. Re-enable when BSF un-comments active recruitments on the homepage."
+  },
+  {
+    "id": "cisf",
+    "name": "CISF",
+    "url": "https://cisfrectt.cisf.gov.in",
+    "tier": 1,
+    "disabled": true,
+    "notes": "cisfrectt.cisf.gov.in serves a JS-only fingerprint-verification page (custom bot detection). Even Playwright loads only the loader. Needs cookie-handshake replay (Fingerprint.start \u2192 /__verify/fp endpoint) to pass \u2014 currently out of scope. Try the parent www.cisf.gov.in/recruitment instead."
+  },
+  {
+    "id": "itbp",
+    "name": "ITBP",
+    "url": "https://recruitment.itbpolice.nic.in/rect/statics/news",
+    "tier": 1,
+    "insecureTls": true,
+    "urlPattern": "recruitment\\.itbpolice\\.nic\\.in/rect/noticeboards/downloadpdf/\\d+\\.pdf"
+  },
+  {
+    "id": "aiims-delhi",
+    "name": "AIIMS Delhi",
+    "url": "https://www.aiims.edu/index.php/en/notices/recruitment/aiims-recruitment",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "/notices/recruitment/aiims-recruitment\\?id=\\d+"
+  },
+  {
+    "id": "kpsc",
+    "name": "KPSC (Karnataka)",
+    "url": "https://kpsc.kar.nic.in/notification.html",
+    "tier": 2,
+    "useCurl": true,
+    "urlPattern": "kpsc\\.kar\\.nic\\.in/.+\\.pdf"
+  },
+  {
+    "id": "rrb-mum",
+    "name": "RRB Mumbai",
+    "url": "https://www.rrbmumbai.gov.in/",
+    "tier": 1,
+    "disabled": true,
+    "notes": "rrbmumbai.gov.in returns hostname/cert mismatch. Even with ignoreHTTPSErrors + Playwright, homepage and /notice.php expose 0 recruitment PDFs and 0 digialm links \u2014 site has no current active CENs publicly listed. Re-investigate when RRB Mumbai posts new CENs (look for a /employment-notices analog)."
+  },
+  {
+    "id": "rrb-kol",
+    "name": "RRB Kolkata",
+    "url": "https://www.rrbkolkata.gov.in",
+    "tier": 1,
+    "renderJs": true,
+    "urlPattern": "rrbkolkata\\.gov\\.in/file/.+\\.pdf|digialm\\.com/EForms/configuredHtml/"
+  },
+  {
+    "id": "iaf-vayu",
+    "name": "Indian Air Force (Agniveervayu)",
+    "url": "https://agnipathvayu.cdac.in",
+    "tier": 1,
+    "urlPattern": "agnipathvayu\\.cdac\\.in/AV/img/.+\\.pdf"
+  },
+  {
+    "id": "csbc",
+    "name": "Bihar Police (CSBC)",
+    "url": "https://csbc.bihar.gov.in",
+    "tier": 1,
+    "urlPattern": "csbc\\.bihar\\.gov\\.in/Advt/.+\\.pdf"
+  },
+  {
+    "id": "uppbpb",
+    "name": "UP Police (UPPBPB)",
+    "url": "https://uppbpb.gov.in/Home/DirectRecruitment",
+    "tier": 1,
+    "renderJs": true,
+    "urlPattern": "uppbpb\\.gov\\.in/Home/DirectRecruitment\\?drId=\\d+"
+  },
+  {
+    "id": "delhi-police",
+    "name": "Delhi Police",
+    "url": "https://www.delhipolice.gov.in/recruitments.aspx",
+    "tier": 2,
+    "disabled": true,
+    "notes": "Delhi Police recruitments.aspx page shows only departmental docs (Citizen_Charter, DAR, Athletics) \u2014 no actual recruitment notifications. Per the xlsx note, Delhi Police hires via SSC (already monitored) + dept-specific channels. Use SSC + DSSSB (already monitored) instead."
+  },
+  {
+    "id": "appsc",
+    "name": "APPSC (Andhra)",
+    "url": "https://psc.ap.gov.in",
+    "tier": 1,
+    "disabled": true,
+    "notes": "APPSC homepage and Playwright-rendered DOM both expose 0 PDFs / notification anchors. Fully SPA-driven with no scrapable listing endpoint. Re-investigate by intercepting API calls in DevTools to find the recruitment data endpoint."
+  },
+  {
+    "id": "tgpsc",
+    "name": "TGPSC (Telangana)",
+    "url": "https://www.tgpsc.gov.in",
+    "tier": 1,
+    "disabled": true,
+    "notes": "TGPSC same as APPSC \u2014 Playwright finds 0 PDFs / notification anchors. SPA-driven with no scrapable listing endpoint. Re-investigate via DevTools API capture."
+  },
+  {
+    "id": "opsc",
+    "name": "OPSC",
+    "url": "https://www.opsc.gov.in/Public/OPSC/Default.aspx",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "opsc\\.gov\\.in/Public/Pages/View_Content\\.aspx\\?id="
+  },
+  {
+    "id": "afcat",
+    "name": "AFCAT (IAF Officers)",
+    "url": "https://afcat.cdac.in/AFCAT/",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "afcat\\.cdac\\.in/AFCAT/assets/images/news/.+"
+  },
+  {
+    "id": "hal",
+    "name": "HAL",
+    "url": "https://hal-india.co.in/backend/wp-json/hal/v1/career?lang=en",
+    "tier": 3,
+    "type": "json",
+    "method": "POST",
+    "formData": {
+      "lang": "en"
+    },
+    "useCurl": true,
+    "headers": {
+      "Accept": "application/json, text/plain, */*",
+      "Referer": "https://hal-india.co.in/career",
+      "Origin": "https://hal-india.co.in"
+    },
+    "itemsPath": "career",
+    "idField": "id",
+    "titleField": "title",
+    "dateField": "floated_date"
+  },
+  {
+    "id": "rrb-chennai",
+    "name": "RRB Chennai",
+    "url": "https://www.rrbchennai.gov.in/",
+    "tier": 1,
+    "urlPattern": "(rrbchennai\\.gov\\.in/downloads/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)"
+  },
+  {
+    "id": "rrb-ahm",
+    "name": "RRB Ahmedabad",
+    "url": "https://rrbahmedabad.gov.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbahmedabad\\.gov\\.in/wp-content/uploads/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)"
+  },
+  {
+    "id": "rrb-pry",
+    "name": "RRB Prayagraj",
+    "url": "https://rrb.bootgrow.com/api/Cen/list",
+    "tier": 1,
+    "type": "json",
+    "headers": {
+      "Accept": "application/json",
+      "Referer": "https://rrbpryj.gov.in/",
+      "Origin": "https://rrbpryj.gov.in"
+    },
+    "idField": "id",
+    "titleField": "title",
+    "linkField": "pdfFilePath",
+    "linkPrefix": "https://rrbpryj.gov.in/files/",
+    "dateField": "notificationDate",
+    "itemsPath": ""
+  },
+  {
+    "id": "rrb-bnc",
+    "name": "RRB Bangalore",
+    "url": "https://www.rrbbnc.gov.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbbnc\\.gov\\.in/notifications/.+\\.pdf|rrbbnc\\.gov\\.in/Notification/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
+    "insecureTls": true
+  },
+  {
+    "id": "rrb-bpl",
+    "name": "RRB Bhopal",
+    "url": "https://rrbbhopal.gov.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbbhopal\\.gov\\.in/.+\\.pdf|^[^/]+\\.pdf$|digialm\\.com/EForms/configuredHtml/)"
+  },
+  {
+    "id": "rrb-bbs",
+    "name": "RRB Bhubaneswar",
+    "url": "https://rrbbbs.gov.in/notice.php",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbbbs\\.gov\\.in/cen\\.php\\?prmt=|rrbbbs\\.gov\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/|cdn\\d+\\.digialm\\.com/OnlineAssessment)"
+  },
+  {
+    "id": "rrb-bsp",
+    "name": "RRB Bilaspur",
+    "url": "https://rrbbilaspur.gov.in/eng/notice.html",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbbilaspur\\.gov\\.in/file/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
+    "insecureTls": true
+  },
+  {
+    "id": "rrb-ghy",
+    "name": "RRB Guwahati",
+    "url": "https://www.rrbguwahati.gov.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbguwahati\\.gov\\.in/documents/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)"
+  },
+  {
+    "id": "rrb-jam",
+    "name": "RRB Jammu",
+    "url": "https://www.rrbjammu.nic.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbjammu\\.nic\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)"
+  },
+  {
+    "id": "rrb-mld",
+    "name": "RRB Malda",
+    "url": "https://www.rrbmalda.gov.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbmalda\\.gov\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
+    "insecureTls": true
+  },
+  {
+    "id": "rrb-mfp",
+    "name": "RRB Muzaffarpur",
+    "url": "https://rrbmuzaffarpur.gov.in/Portal/Default.aspx",
+    "tier": 1,
+    "useCurl": true,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbmuzaffarpur\\.gov\\.in/Portal/DownloadFile\\.aspx|digialm\\.com/EForms/configuredHtml/)"
+  },
+  {
+    "id": "rrb-pat",
+    "name": "RRB Patna",
+    "url": "https://www.rrbpatna.gov.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbpatna\\.gov\\.in/Docs/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)"
+  },
+  {
+    "id": "rrb-rnc",
+    "name": "RRB Ranchi",
+    "url": "https://www.rrbranchi.gov.in/",
+    "tier": 1,
+    "disabled": true,
+    "notes": "rrbranchi.gov.in HTTPS connection times out and HTTP returns 502. Site appears to be down at time of investigation. Re-enable when reachable; expected pattern likely matches other RRB sites (homepage with PDFs)."
+  },
+  {
+    "id": "rrb-sec",
+    "name": "RRB Secunderabad",
+    "url": "https://rrbsecunderabad.gov.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbsecunderabad\\.gov\\.in/wp-content/uploads/.+\\.pdf|digialm\\.com/EForms/configuredHtml/|cdn\\d+\\.digialm\\.com/OnlineAssessment)"
+  },
+  {
+    "id": "rrb-sgu",
+    "name": "RRB Siliguri",
+    "url": "https://www.rrbsiliguri.gov.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbsiliguri\\.gov\\.in/downloads/.+\\.pdf|digialm\\.com/EForms/configuredHtml/|cdn\\d+\\.digialm\\.com/OnlineAssessment)",
+    "titleFromUrl": true
+  },
+  {
+    "id": "rrb-tvm",
+    "name": "RRB Thiruvananthapuram",
+    "url": "https://www.rrbthiruvananthapuram.gov.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbthiruvananthapuram\\.gov\\.in/assets/pdf/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
+    "useCurl": true
+  },
+  {
+    "id": "rrb-ajm",
+    "name": "RRB Ajmer",
+    "url": "https://www.rrbajmer.gov.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbajmer\\.gov\\.in/Upload_PDF/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
+    "titleFromUrl": true,
+    "insecureTls": true
+  },
+  {
+    "id": "rrb-gkp",
+    "name": "RRB Gorakhpur",
+    "url": "https://www.rrbgkp.gov.in/",
+    "tier": 1,
+    "containerSelector": "main, #content, body",
+    "urlPattern": "(rrbgkp\\.gov\\.in/(notices|Notices|Noticenew|results|Results)/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)"
+  },
+  {
+    "id": "indian-navy",
+    "name": "Indian Navy (Agniveer/Officers)",
+    "url": "https://www.joinindiannavy.gov.in/",
+    "tier": 1,
+    "urlPattern": "joinindiannavy\\.gov\\.in/files/Advt-.+\\.pdf"
+  },
+  {
+    "id": "ssb",
+    "name": "SSB",
+    "url": "https://ssb.gov.in/api/api/Advertisement",
+    "tier": 1,
+    "type": "json",
+    "headers": {
+      "Referer": "https://ssb.gov.in/",
+      "Accept": "application/json, text/plain, */*"
+    },
+    "itemsPath": "listAdvertisement",
+    "idField": "id",
+    "titleField": [
+      "title",
+      "advNo"
+    ],
+    "linkField": "docName",
+    "linkPrefix": "https://ssb.gov.in/Uploads/Advertisement/",
+    "dateField": "oDate"
+  },
+  {
+    "id": "icg",
+    "name": "Indian Coast Guard (CGEPT/CGCAT)",
+    "url": "https://joinindiancoastguard.cdac.in/cgept/",
+    "tier": 1,
+    "urlPattern": "joinindiancoastguard\\.cdac\\.in/cgept/assets/img/news/.+\\.pdf",
+    "titleFromUrl": true
+  },
+  {
+    "id": "icg-cgcat",
+    "name": "Indian Coast Guard (CGCAT Officers)",
+    "url": "https://joinindiancoastguard.cdac.in/cgcat/",
+    "tier": 1,
+    "urlPattern": "joinindiancoastguard\\.cdac\\.in/cgcat/assets/img/news/.+\\.pdf",
+    "titleFromUrl": true
+  },
+  {
+    "id": "assam-rifles",
+    "name": "Assam Rifles",
+    "url": "https://assamrifles.gov.in/",
+    "tier": 1,
+    "disabled": true,
+    "notes": "Assam Rifles is an Angular SPA. Recruitments live behind a JSON-body POST: POST https://assamrifles.gov.in/api/recruitment with body {\"eventID\":\"1004\",\"addInfo\":{}}. Returns 14+ items with CONTENT_ID + SUBJECT + DATE but no direct PDF URL (PDFs are served via app-internal route via CONTENT_ID). Engine currently does not support JSON-body POST (formData is multipart only). Onboard once engine supports POST with bodyJson, OR resolve CONTENT_ID->PDF download URL pattern."
+  },
+  {
+    "id": "nsg",
+    "name": "NSG",
+    "url": "https://nsg.gov.in/media-centre/vacancies",
+    "tier": 1,
+    "disabled": true,
+    "notes": "NSG /media-centre/vacancies page renders a single \"Coming Soon\" panel \u2014 there are no public vacancy notifications on the website. NSG hires senior officers on deputation from Army/CAPFs (not via open recruitment). Re-investigate if NSG ever publishes direct intake notifications."
+  },
+  {
+    "id": "mes",
+    "name": "MES (Defence)",
+    "url": "https://mes.gov.in/",
+    "tier": 1,
+    "disabled": true,
+    "notes": "mes.gov.in serves a 502 Bad Gateway on every URL tried (/, /career, /recruitment-cell, /recruitments). Server appears to be persistently down or behind a broken upstream. MES recruits Group-B/C posts via UPSC/SSC \u2014 already monitored. Re-enable when site comes back online."
+  },
+  {
+    "id": "maha-police",
+    "name": "Maharashtra Police",
+    "url": "https://www.mahapolice.gov.in/police-recruitment.php",
+    "tier": 1,
+    "urlPattern": "mahapolice\\.gov\\.in/uploads/police_recruitment/.+\\.pdf",
+    "titleFromUrl": true
+  },
+  {
+    "id": "raj-police",
+    "name": "Rajasthan Police",
+    "url": "https://police.rajasthan.gov.in/",
+    "tier": 2,
+    "disabled": true,
+    "notes": "Rajasthan Police runs an Angular SPA at police.rajasthan.gov.in/portal/ that exposes 0 public anchors (only 6 anchors: language toggles + Play Store). Recruitment for Rajasthan Police constables/SI is conducted by RSMSSB/RPSC (already monitored). Old portal at www.police.rajasthan.gov.in/old/ has no public recruitment listing either."
+  },
+  {
+    "id": "tn-police",
+    "name": "TN Police (TNUSRB)",
+    "url": "https://www.tnusrb.tn.gov.in/",
+    "tier": 1,
+    "urlPattern": "tnusrb\\.tn\\.gov\\.in/pdfs/(Notification|JR|CR|Open|Dept|Common|Police|Fire|Annual|Syllabus|FAQ).+\\.pdf",
+    "titleFromUrl": true
+  },
+  {
+    "id": "guj-police",
+    "name": "Gujarat Police (GPRB)",
+    "url": "https://gprb.gujarat.gov.in/advertisements.htm",
+    "tier": 1,
+    "urlPattern": "gprb\\.gujarat\\.gov\\.in/advertisement-detail\\.htm\\?\\d+"
+  },
+  {
+    "id": "ts-police",
+    "name": "Telangana Police (TGPRB)",
+    "url": "https://tslprb.in/",
+    "tier": 1,
+    "urlPattern": "(www\\.)?tgprb\\.in/[A-Z_]+_PDF/.+\\.pdf"
+  },
+  {
+    "id": "ap-police",
+    "name": "AP Police (APSLPRB)",
+    "url": "https://slprb.ap.gov.in/UI/recruitments.aspx",
+    "tier": 1,
+    "urlPattern": "slprb\\.ap\\.gov\\.in/PDFS/.+\\.(pdf|PDF)"
+  },
+  {
+    "id": "hpsc",
+    "name": "HPSC",
+    "url": "https://hpsc.gov.in",
+    "tier": 2,
+    "urlPattern": "Portals/0/.+\\.pdf"
+  },
+  {
+    "id": "ppsc",
+    "name": "PPSC",
+    "url": "https://ppsc.gov.in",
+    "tier": 2,
+    "useCurl": true,
+    "urlPattern": "/index\\.aspx\\?page=\\d+&tabid=10&tablinkid=\\d+"
+  },
+  {
+    "id": "psssb",
+    "name": "PSSSB",
+    "url": "https://sssb.punjab.gov.in",
+    "tier": 2,
+    "useCurl": true,
+    "urlPattern": "sssb\\.punjab\\.gov\\.in/wp-content/uploads/.+\\.pdf"
+  },
+  {
+    "id": "wbpsc",
+    "name": "WBPSC",
+    "url": "https://psc.wb.gov.in",
+    "tier": 2,
+    "useCurl": true,
+    "urlPattern": "Download\\?param1=.+&param2=advertisement"
+  },
+  {
+    "id": "gsssb",
+    "name": "GSSSB",
+    "url": "https://gsssb.gujarat.gov.in/Notification",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "AdvertisementsDetails\\?strdata="
+  },
+  {
+    "id": "osssc",
+    "name": "OSSSC",
+    "url": "https://www.osssc.gov.in/Public/OSSSC/Default.aspx",
+    "tier": 2,
+    "disabled": true,
+    "notes": "OSSSC homepage notifications use ASP.NET __doPostBack \u2014 every notice has the same href shape, only differing by control id (lnk_btn_UR_N). Engine dedupes by href, collapsing all notices to one entry. Same blocker as UPSSSC. Re-enable when scraper supports dedupe-by-text."
+  },
+  {
+    "id": "jkssb",
+    "name": "JKSSB",
+    "url": "https://www.ssbjk.org.in/",
+    "tier": 2,
+    "insecureTls": true,
+    "urlPattern": "(ssbjk\\.org\\.in/.+\\.pdf|apps\\.ssbjk\\.org\\.in/portal/.+\\.pdf)"
+  },
+  {
+    "id": "jssc",
+    "name": "JSSC",
+    "url": "https://jssc.jharkhand.gov.in",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "/notices/.+",
+    "excludePattern": "/notices/(advertisements|other-notices)$"
+  },
+  {
+    "id": "cg-vyapam",
+    "name": "CG Vyapam",
+    "url": "https://vyapamcg.cgstate.gov.in",
+    "tier": 2,
+    "urlPattern": "vyapamcg\\.cgstate\\.gov\\.in/uploads/(pdfs|menus/files)/.+\\.pdf"
+  },
+  {
+    "id": "uksssc",
+    "name": "UKSSSC",
+    "url": "https://sssc.uk.gov.in",
+    "tier": 2,
+    "urlPattern": "cdnbbsr\\.s3waas\\.gov\\.in/.+\\.pdf"
+  },
+  {
+    "id": "hpsssb",
+    "name": "HPSSSB",
+    "url": "https://hpsssb.hp.gov.in",
+    "tier": 2,
+    "disabled": true,
+    "notes": "hpsssb.hp.gov.in returns 404 for /, /Default.aspx, /index/index, /HPSSSB/, /Index.aspx \u2014 the entire site appears to have been decommissioned or migrated. Re-investigate by tracking down the new HP SSC URL (may have moved under hpssc.hp.gov.in or similar)."
+  },
+  {
+    "id": "mp-esb",
+    "name": "MP ESB (ex-Vyapam)",
+    "url": "https://esb.mp.gov.in/home_n.html",
+    "tier": 2,
+    "urlPattern": "(Advertisement/ADV_\\d{4}/.+\\.pdf|Rulebooks/RB_\\d{4}/.+\\.pdf)"
+  },
+  {
+    "id": "jkpsc",
+    "name": "JKPSC",
+    "url": "https://jkpsc.nic.in",
+    "tier": 2,
+    "urlPattern": "jkpsc\\.nic\\.in/[Pp][Dd][Ff]/.+\\.[Pp][Dd][Ff]"
+  },
+  {
+    "id": "jpsc",
+    "name": "JPSC",
+    "url": "https://www.jpsc.gov.in/advertisement.php",
+    "tier": 2,
+    "urlPattern": "/data/.+\\.pdf"
+  },
+  {
+    "id": "cgpsc",
+    "name": "CGPSC",
+    "url": "https://psc.cg.gov.in/Advertisement.php",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "PDFs/advertisement/.+\\.pdf"
+  },
+  {
+    "id": "ukpsc",
+    "name": "UKPSC",
+    "url": "https://psc.uk.gov.in/candidate-corner/recruitment",
+    "tier": 2,
+    "useCurl": true,
+    "urlPattern": "psc\\.uk\\.gov\\.in/public/uploads/recruitment/.+\\.pdf"
+  },
+  {
+    "id": "hppsc",
+    "name": "HPPSC",
+    "url": "https://hppsc.hp.gov.in/CommonControls/ViewContinuousLinkPage?qs=mhlKjiXMMItGo46f60VBXX8%2B1SQ83OzVLj9MfDScpvboDSdMygkK4iLV47Bu%2FJzMpJLanI%2BihrK9p8W6JsSQUgHTy39NyiuO%2BFtbEmiPQyc%3D",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "CMSFileView\\?qs="
+  },
+  {
+    "id": "manipur-psc",
+    "name": "Manipur PSC",
+    "url": "https://mpscmanipur.gov.in/Recruitment_Advertisement.html",
+    "tier": 2,
+    "useCurl": true,
+    "titleFromUrl": true,
+    "urlPattern": "mpscmanipur\\.gov\\.in/files/.+\\.pdf"
+  },
+  {
+    "id": "nagaland-psc",
+    "name": "Nagaland PSC",
+    "url": "https://npsc.nagaland.gov.in/advertisement",
+    "tier": 2,
+    "urlPattern": "npsc\\.nagaland\\.gov\\.in/advertisement/\\d+"
+  },
+  {
+    "id": "meghalaya-psc",
+    "name": "Meghalaya PSC",
+    "url": "http://www.mpsc.meghalaya.gov.in/advertisements.html",
+    "tier": 2,
+    "urlPattern": "mpsc\\.meghalaya\\.gov\\.in/(advt|notify)/.+\\.pdf"
+  },
+  {
+    "id": "tripura-psc",
+    "name": "Tripura PSC",
+    "url": "https://tpsc.tripura.gov.in",
+    "tier": 2,
+    "urlPattern": "tpsc\\.tripura\\.gov\\.in/sites/default/files/.+\\.pdf"
+  },
+  {
+    "id": "arunachal-psc",
+    "name": "Arunachal PSC",
+    "url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
+    "tier": 2,
+    "urlPattern": "appsc\\.gov\\.in/upload/.+\\.pdf"
+  },
+  {
+    "id": "sikkim-psc",
+    "name": "Sikkim PSC",
+    "url": "https://spsc.sikkim.gov.in/Advertisement.html",
+    "tier": 2,
+    "useCurl": true,
+    "urlPattern": "spsc\\.sikkim\\.gov\\.in/Advertisements/.+\\.pdf"
+  },
+  {
+    "id": "mizoram-psc",
+    "name": "Mizoram PSC",
+    "url": "https://mpsc.mizoram.gov.in/page/advertisement-2026-2027",
+    "tier": 2,
+    "urlPattern": "mpsc\\.mizoram\\.gov\\.in/uploads/attachments/.+\\.pdf"
+  },
+  {
+    "id": "goa-psc",
+    "name": "Goa PSC",
+    "url": "https://gpsc.goa.gov.in/advertisements/",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "gpsc\\.goa\\.gov\\.in/wp-content/uploads/.+\\.pdf",
+    "excludePattern": "(AR-\\d|gen-instructions|NEWSCHEME|KOKANI|UPPERAGE|AGE_RELAXATION)"
+  },
+  {
+    "id": "assam-psc",
+    "name": "Assam PSC",
+    "url": "https://apsc.nic.in/advt_2026.php",
+    "tier": 2,
+    "useCurl": true,
+    "urlPattern": "(advt_\\d{4}|notif_\\d{4}|misc_\\d{4})/.+\\.pdf"
+  },
+  {
+    "id": "upsc-online",
+    "name": "UPSC Online",
+    "url": "https://upsconline.gov.in",
+    "tier": 1,
+    "disabled": true,
+    "notes": "upsconline.gov.in is now a frozen archive (notice on page: 'only for preview of application forms filled/submitted on or before 25/03/2025'). Active portal upsconline.nic.in is an Angular SPA that only lists exam application forms, not recruitment notifications. Redundant with the existing 'upsc' source (upsc.gov.in/whats-new) which already has the recruitment ads."
+  },
+  {
+    "id": "drdo-rac",
+    "name": "DRDO RAC",
+    "url": "https://rac.gov.in",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "rac\\.gov\\.in/download/advt_\\d+(?:_v\\d+)?\\.pdf"
+  },
+  {
+    "id": "csir-hrdg",
+    "name": "CSIR HRDG",
+    "url": "https://csirhrdg.res.in/Home/Index/1/Default/3360/151",
+    "tier": 2,
+    "disabled": true,
+    "notes": "CSIR HRDG /Notice page hosts only fellowship-administration OMs (transfers, contingency-claim formats, fellowship guidelines) \u2014 not direct recruitment ads. The fellowship intake itself is via JRF-NET (NTA-conducted) and JRF-GATE, both already covered by the 'nta' source. Re-enable if HRDG starts publishing direct recruitment for HRDG cadre staff."
+  },
+  {
+    "id": "bel",
+    "name": "BEL",
+    "url": "https://bel-india.in/job-notifications/",
+    "tier": 3,
+    "urlPattern": "bel-india\\.in/wp-content/uploads/\\d{4}/\\d{2}/.+\\.pdf",
+    "excludePattern": "Brochure|Booklet|Vendor|Sub-Contract|WCM|2017|2018|2019|2020|2021|2022|2023|2024"
+  },
+  {
+    "id": "ecil",
+    "name": "ECIL",
+    "url": "https://www.ecil.co.in/jobopenings",
+    "tier": 3,
+    "urlPattern": "ecil\\.co\\.in/jobs/(Advt|HRM|Walk).+\\.pdf",
+    "excludePattern": "FAQ|Application_Form"
+  },
+  {
+    "id": "sail",
+    "name": "SAIL",
+    "url": "https://sailcareers.com/Archive.aspx?Section=Jobs",
+    "tier": 3,
+    "renderJs": true,
+    "urlPattern": "aima-web-images\\.s3\\.ap-south-1\\.amazonaws\\.com/sailcareers\\.com/Downloads/.+\\.pdf"
+  },
+  {
+    "id": "coal-india",
+    "name": "Coal India",
+    "url": "https://www.coalindia.in/career-cil/jobs-coal-india/",
+    "tier": 3,
+    "renderJs": true,
+    "urlPattern": "d3u7ubx0okog7j\\.cloudfront\\.net/documents/.+\\.pdf"
+  },
+  {
+    "id": "nhpc",
+    "name": "NHPC",
+    "url": "https://nhpcindia.com/welcome/job",
+    "tier": 3,
+    "useCurl": true,
+    "insecureTls": true,
+    "titleFromUrl": true,
+    "urlPattern": "nhpcindia\\.com/assests/pzi_public/job/details_.+\\.pdf"
+  },
+  {
+    "id": "pgcil",
+    "name": "PGCIL (Powergrid)",
+    "url": "https://www.powergrid.in/job-opportunities",
+    "tier": 3,
+    "urlPattern": "powergrid\\.in/sites/default/files/job_opportunities_document/.+\\.pdf"
+  },
+  {
+    "id": "bsnl",
+    "name": "BSNL",
+    "url": "https://www.bsnl.co.in/opencms/bsnl/BSNL/about_us/recruitment/recruitment.html",
+    "tier": 3,
+    "disabled": true,
+    "notes": "BSNL's main site (www.bsnl.co.in) has been rebuilt as a chatbot-only React SPA. The legacy /opencms/.../recruitment.html URL is reachable (200) but body is essentially empty (7KB shell). Modern routes like /recruitment return 404. No public recruitment listing exists. BSNL recruitment notices appear in Employment News (already covered) and via DoT's all-vacancies page; rely on those."
+  },
+  {
+    "id": "pgimer",
+    "name": "PGIMER Chandigarh",
+    "url": "https://pgimer.edu.in/PGIMER_PORTAL/PGIMERPORTAL/Vacancies/JSP/VIEW_CALL.jsp?aflag=0",
+    "tier": 2,
+    "insecureTls": true,
+    "urlPattern": "ViewAll\\.jsp\\?record=\\d+"
+  },
+  {
+    "id": "jipmer",
+    "name": "JIPMER Puducherry",
+    "url": "https://jipmer.edu.in/jobs",
+    "tier": 2,
+    "useCurl": true,
+    "urlPattern": "/announcement/.+(recruitment|nursing|junior-resident|technician|gr-b-c|advt|vacancy)"
+  },
+  {
+    "id": "nhm",
+    "name": "NHM (Central)",
+    "url": "https://nhm.gov.in",
+    "tier": 2,
+    "disabled": true,
+    "notes": "Central nhm.gov.in is policy/programme content only \u2014 no Recruitment, Vacancy, Career, or Notice anchors of any kind. NHM hires happen through state-level NHM portals (UP NRHM, Bihar SHS, MP NHM etc.), each with its own URL. Treat NHM as a parent ministry; track state-NHM portals separately if needed."
+  },
+  {
+    "id": "ncert",
+    "name": "NCERT",
+    "url": "https://ncert.nic.in/?ln=en",
+    "tier": 2,
+    "useCurl": true,
+    "insecureTls": true,
+    "urlPattern": "pdf/announcement/vacancies/.+\\.pdf"
+  },
+  {
+    "id": "ugc",
+    "name": "UGC",
+    "url": "https://www.ugc.gov.in/Tenders/Jobs",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "/pdfnews/\\d+_.+\\.pdf"
+  },
+  {
+    "id": "aicte",
+    "name": "AICTE",
+    "url": "https://www.aicte.gov.in",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "facilities\\.aicte-india\\.org/recruitment_aicte/.+\\.pdf|aicte\\.gov\\.in/sites/default/files/.+(recruitment|Vacancy|Recruitment).+\\.pdf",
+    "notes": "Old aicte-india.org domain redirects to aicte.gov.in. Dedicated /opportunities/jobs and /opportunities/recruitment pages have only initiative PDFs. Vacancy circulars surfaced on homepage carousel + facilities.aicte-india.org subdomain."
+  },
+  {
+    "id": "ncs-portal",
+    "name": "NCS Portal",
+    "url": "https://betacloud.ncs.gov.in/api/news",
+    "tier": 2,
+    "type": "json",
+    "useCurl": true,
+    "headers": {
+      "Accept": "application/json"
+    },
+    "itemsPath": "data",
+    "idField": "id",
+    "titleField": "titleEnglish",
+    "linkField": "newsUrl",
+    "dateField": "created",
+    "stripQuery": true,
+    "notes": "NCS publishes a 'What's New' news feed at the betacloud subdomain. Server returns XML when Accept: text/html is sent (default), so we force Accept: application/json via useCurl + headers. newsUrl is a presigned Azure blob URL \u2014 stripQuery dedupes when the SAS token rotates."
+  },
+  {
+    "id": "employment-news",
+    "name": "Employment News",
+    "url": "https://employmentnews.gov.in/NewEmp/MoreContentS.aspx?n=WebAdvertisement",
+    "tier": 2,
+    "renderJs": true,
+    "urlPattern": "writereaddata/\\d+\\.pdf",
+    "notes": "Aggregator: Employment News re-publishes weekly recruitment ads from many central govt sources. High coverage but high redundancy with already-monitored sources."
+  }
+]
