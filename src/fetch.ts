@@ -149,10 +149,19 @@ async function fetchWithPlaywright(source: SourceConfig): Promise<string> {
   });
   const page = await ctx.newPage();
   try {
-    await page.goto(effectiveUrl(source), {
+    const response = await page.goto(effectiveUrl(source), {
       waitUntil: "domcontentloaded",
       timeout: source.timeoutMs ?? 45_000,
     });
+    if (response && !response.ok()) {
+      throw new Error(`HTTP ${response.status()} ${response.statusText()}`);
+    }
+    // For non-HTML response types, the raw body is what we want — Chromium
+    // would pretty-print XML/JSON in the DOM and clobber our extractors.
+    if (source.type === "sitemap" || source.type === "json") {
+      if (!response) throw new Error("no response");
+      return await response.text();
+    }
     // Give SPAs a moment to hydrate after DOMContentLoaded.
     await page.waitForLoadState("networkidle", { timeout: 10_000 }).catch(() => {});
     return await page.content();
