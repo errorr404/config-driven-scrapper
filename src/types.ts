@@ -35,6 +35,7 @@ export interface SourceConfig {
   headers?: Record<string, string>;
   insecureTls?: boolean;     // disable TLS cert verification (use only for known-broken govt certs)
   legacySsl?: boolean;       // enable OpenSSL UnsafeLegacyRenegotiation (curl path only) for sites that need it
+  cacheBust?: boolean;       // append a per-request "_=<ts>" query so CDN edges (e.g. CloudFront) can't serve stale cached misses
   useCurl?: boolean;         // shell out to system curl (handles redirect loops + system CA store)
   method?: "GET" | "POST";   // default: GET
   formData?: Record<string, string>; // multipart form fields (POST only)

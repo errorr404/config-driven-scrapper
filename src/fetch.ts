@@ -44,6 +44,12 @@ const DEFAULT_HEADERS: Record<string, string> = {
   "Cache-Control": "no-cache",
 };
 
+function effectiveUrl(source: SourceConfig): string {
+  if (!source.cacheBust) return source.url;
+  const sep = source.url.includes("?") ? "&" : "?";
+  return `${source.url}${sep}_=${Date.now()}`;
+}
+
 export async function fetchPage(source: SourceConfig): Promise<string> {
   if (source.renderJs) return fetchWithPlaywright(source);
   if (source.useCurl) return fetchWithCurl(source);
@@ -71,7 +77,7 @@ async function fetchWithCurl(source: SourceConfig): Promise<string> {
       args.push("--form", `${k}=${v}`);
     }
   }
-  args.push(source.url);
+  args.push(effectiveUrl(source));
 
   const env = source.legacySsl
     ? { ...process.env, OPENSSL_CONF: getLegacySslConf() }
@@ -104,7 +110,7 @@ async function fetchWithHttp(source: SourceConfig): Promise<string> {
     signal: AbortSignal.timeout(timeout),
   };
   if (source.insecureTls) opts.dispatcher = insecureAgent;
-  const res = await fetch(source.url, opts);
+  const res = await fetch(effectiveUrl(source), opts);
   if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
   return res.text();
 }
@@ -142,7 +148,7 @@ async function fetchWithPlaywright(source: SourceConfig): Promise<string> {
   });
   const page = await ctx.newPage();
   try {
-    await page.goto(source.url, {
+    await page.goto(effectiveUrl(source), {
       waitUntil: "domcontentloaded",
       timeout: source.timeoutMs ?? 45_000,
     });
