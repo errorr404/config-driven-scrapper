@@ -57,9 +57,11 @@
     "name": "RRB Chandigarh",
     "url": "https://www.rrbcdg.gov.in/employment-notices.php",
     "tier": 1,
-    "renderJs": true,
+    "useCurl": true,
+    "timeoutMs": 90000,
     "containerSelector": "main, #content, table, body",
-    "urlPattern": "(rrbcdg\\.gov\\.in/uploads/\\d{4}/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)"
+    "urlPattern": "(rrbcdg\\.gov\\.in/uploads/\\d{4}/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
+    "notes": "Upstream is flaky and slow (responses range 32s–60s+, sometimes outright timeouts). Playwright's Chromium stack hangs on this host even at 90s — curl is the only reliable path. Static HTML already contains the digialm.com form links, no JS hydration needed."
   },
   {
     "id": "lic",
