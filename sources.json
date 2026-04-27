@@ -218,7 +218,9 @@
     "url": "https://ongcindia.com/web/eng/career/recruitment-notice",
     "tier": 3,
     "urlPattern": "ongcindia\\.com/documents/.+\\.pdf",
-    "excludePattern": "(CSR|policy|Policy|investor)"
+    "excludePattern": "(CSR|policy|Policy|investor)",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "ntpc",
@@ -854,7 +856,9 @@
     "name": "UKSSSC",
     "url": "https://sssc.uk.gov.in",
     "tier": 2,
-    "urlPattern": "cdnbbsr\\.s3waas\\.gov\\.in/.+\\.pdf"
+    "urlPattern": "cdnbbsr\\.s3waas\\.gov\\.in/.+\\.pdf",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "hpsssb",
