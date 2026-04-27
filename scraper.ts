@@ -140,22 +140,11 @@ async function main() {
     `\nPass complete in ${(passMs / 1000).toFixed(1)}s — ${results.length} sources, ${errored} errored, ${newCount} new links across ${withNew.length} sources.`,
   );
 
-  // ALWAYS_NOTIFY=true sends a heartbeat summary even on zero-new-link runs.
-  // Useful for confirming the cron is alive; noisy long-term — disable once you trust it.
-  const alwaysNotify = process.env.ALWAYS_NOTIFY === "true" || process.env.ALWAYS_NOTIFY === "1";
-  const summary = `📊 ${(passMs / 1000).toFixed(1)}s · ${results.length} sources · ${errored} errored · ${newCount} new`;
-
   if (withNew.length === 0) {
-    if (alwaysNotify) {
-      const sent = await notifyTelegram(summary);
-      console.log(sent ? "Sent heartbeat." : "Skipped heartbeat (Telegram not configured).");
-    } else {
-      console.log("No new vacancies.");
-    }
+    console.log("No new vacancies.");
     return;
   }
-  const detail = formatMessage(withNew);
-  const message = alwaysNotify ? `${summary}\n\n${detail}` : detail;
+  const message = formatMessage(withNew);
   const sent = await notifyTelegram(message);
   console.log(sent ? "Sent Telegram notification." : "Skipped Telegram (not configured).");
 }
