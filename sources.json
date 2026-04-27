@@ -904,7 +904,9 @@
     "url": "https://psc.uk.gov.in/candidate-corner/recruitment",
     "tier": 2,
     "useCurl": true,
-    "urlPattern": "psc\\.uk\\.gov\\.in/public/uploads/recruitment/.+\\.pdf"
+    "urlPattern": "psc\\.uk\\.gov\\.in/public/uploads/recruitment/.+\\.pdf",
+    "legacySsl": true,
+    "insecureTls": true
   },
   {
     "id": "hppsc",

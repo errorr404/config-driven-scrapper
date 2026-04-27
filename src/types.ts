@@ -34,6 +34,7 @@ export interface SourceConfig {
   timeoutMs?: number;
   headers?: Record<string, string>;
   insecureTls?: boolean;     // disable TLS cert verification (use only for known-broken govt certs)
+  legacySsl?: boolean;       // enable OpenSSL UnsafeLegacyRenegotiation (curl path only) for sites that need it
   useCurl?: boolean;         // shell out to system curl (handles redirect loops + system CA store)
   method?: "GET" | "POST";   // default: GET
   formData?: Record<string, string>; // multipart form fields (POST only)

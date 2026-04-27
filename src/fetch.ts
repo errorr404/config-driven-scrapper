@@ -1,8 +1,38 @@
 import { Agent } from "undici";
 import { spawn } from "node:child_process";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import type { SourceConfig } from "./types.js";
 
 const insecureAgent = new Agent({ connect: { rejectUnauthorized: false } });
+
+// Some govt sites (e.g. psc.uk.gov.in) only negotiate via legacy TLS renegotiation,
+// which OpenSSL 3.x rejects by default ("unsafe legacy renegotiation disabled").
+// Fix: point curl at an OpenSSL config that re-enables it. Written once, reused.
+let legacySslConfPath: string | null = null;
+function getLegacySslConf(): string {
+  if (legacySslConfPath) return legacySslConfPath;
+  const p = path.join(os.tmpdir(), `openssl-legacy-${process.pid}.cnf`);
+  fs.writeFileSync(
+    p,
+    [
+      "openssl_conf = openssl_init",
+      "",
+      "[openssl_init]",
+      "ssl_conf = ssl_sect",
+      "",
+      "[ssl_sect]",
+      "system_default = system_default_sect",
+      "",
+      "[system_default_sect]",
+      "Options = UnsafeLegacyRenegotiation",
+      "",
+    ].join("\n"),
+  );
+  legacySslConfPath = p;
+  return p;
+}
 
 const USER_AGENT =
   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
@@ -43,8 +73,12 @@ async function fetchWithCurl(source: SourceConfig): Promise<string> {
   }
   args.push(source.url);
 
+  const env = source.legacySsl
+    ? { ...process.env, OPENSSL_CONF: getLegacySslConf() }
+    : process.env;
+
   return new Promise((resolve, reject) => {
-    const child = spawn("/usr/bin/curl", args);
+    const child = spawn("/usr/bin/curl", args, { env });
     let stdout = "";
     let stderr = "";
     child.stdout.on("data", (chunk) => (stdout += chunk.toString()));
