@@ -45,11 +45,61 @@ jobs:
           restore-keys: |
             scraper-state-
 
+      - name: Connect to Windscribe (India endpoint)
+        env:
+          OVPN_CONFIG: ${{ secrets.WINDSCRIBE_OVPN_CONFIG }}
+          OVPN_USER: ${{ secrets.WINDSCRIBE_USERNAME }}
+          OVPN_PASS: ${{ secrets.WINDSCRIBE_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [ -z "${OVPN_CONFIG:-}" ] || [ -z "${OVPN_USER:-}" ] || [ -z "${OVPN_PASS:-}" ]; then
+            echo "::error::WINDSCRIBE_OVPN_CONFIG / WINDSCRIBE_USERNAME / WINDSCRIBE_PASSWORD are not set"
+            exit 1
+          fi
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq openvpn iproute2 >/dev/null
+          printf '%s\n' "$OVPN_CONFIG" | sudo tee /etc/openvpn/client.conf >/dev/null
+          printf '%s\n%s\n' "$OVPN_USER" "$OVPN_PASS" | sudo tee /etc/openvpn/auth.txt >/dev/null
+          sudo chmod 600 /etc/openvpn/auth.txt
+          # Ensure config uses our auth file
+          if ! grep -q '^auth-user-pass' /etc/openvpn/client.conf; then
+            echo "auth-user-pass /etc/openvpn/auth.txt" | sudo tee -a /etc/openvpn/client.conf >/dev/null
+          else
+            sudo sed -i 's#^auth-user-pass.*#auth-user-pass /etc/openvpn/auth.txt#' /etc/openvpn/client.conf
+          fi
+          sudo openvpn --config /etc/openvpn/client.conf --daemon --log /tmp/openvpn.log
+          # Wait for tunnel
+          for i in $(seq 1 45); do
+            if ip addr show 2>/dev/null | grep -q '^.*: tun'; then
+              echo "VPN tunnel up after ${i}s"
+              break
+            fi
+            sleep 1
+          done
+          if ! ip addr show 2>/dev/null | grep -q '^.*: tun'; then
+            echo "::error::OpenVPN failed to bring up tunnel"
+            sudo tail -50 /tmp/openvpn.log || true
+            exit 1
+          fi
+          echo "Public IP via VPN:"
+          curl --max-time 15 -fsS https://ifconfig.me || echo "(check failed)"
+          echo
+          echo "Geo:"
+          curl --max-time 15 -fsS https://ipinfo.io/json || echo "(check failed)"
+
       - name: Run scraper
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: npm start
+
+      - name: Disconnect VPN
+        if: always()
+        run: |
+          sudo pkill openvpn || true
+          sleep 1
+          echo "Public IP after disconnect:"
+          curl --max-time 10 -fsS https://ifconfig.me || true
 
       - name: Save scraper state
         if: always()
