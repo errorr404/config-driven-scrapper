@@ -10,7 +10,9 @@
     "titleField": "headline",
     "linkField": "attachments.0.path",
     "linkPrefix": "https://ssc.gov.in/",
-    "dateField": "createdAt"
+    "dateField": "createdAt",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "upsc",
@@ -18,7 +20,9 @@
     "url": "https://upsc.gov.in/whats-new",
     "tier": 1,
     "urlPattern": "/whats-new/.+",
-    "excludePattern": "/whats-new/?$"
+    "excludePattern": "/whats-new/?$",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "ibps",
@@ -50,7 +54,7 @@
     "url": "https://joinindianarmy.nic.in/",
     "tier": 1,
     "disabled": true,
-    "notes": "joinindianarmy.nic.in returns the same 3.4 KB fallback for every public URL \u2014 fully auth-walled. indianarmy.nic.in/career/* pages are informational text only (no PDFs or notifications). PIB Defence RSS is broken (returns ErrorPage). Track via Twitter @adgpi, Employment News print/digital, or wait for an official public listing."
+    "notes": "joinindianarmy.nic.in returns the same 3.4 KB fallback for every public URL — fully auth-walled. indianarmy.nic.in/career/* pages are informational text only (no PDFs or notifications). PIB Defence RSS is broken (returns ErrorPage). Track via Twitter @adgpi, Employment News print/digital, or wait for an official public listing."
   },
   {
     "id": "rrb-cdg",
@@ -76,7 +80,9 @@
     "url": "https://sbi.co.in/web/careers/current-openings",
     "tier": 1,
     "urlPattern": "sbi\\.co\\.in/documents/77530/.+\\.pdf",
-    "excludePattern": "(BIODATA|Scribe|Declaration|How_To_Apply|How\\+to\\+Apply|CTC_Negotiation|CTC\\+Negotiation|IH_English|IH_Hindi|IH\\+English|IH\\+Hindi)"
+    "excludePattern": "(BIODATA|Scribe|Declaration|How_To_Apply|How\\+to\\+Apply|CTC_Negotiation|CTC\\+Negotiation|IH_English|IH_Hindi|IH\\+English|IH\\+Hindi)",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "rpsc",
@@ -84,7 +90,8 @@
     "url": "https://rpsc.rajasthan.gov.in/advertisements",
     "tier": 1,
     "renderJs": true,
-    "urlPattern": "Static/RecruitmentAdvertisements/[A-F0-9]+\\.pdf"
+    "urlPattern": "Static/RecruitmentAdvertisements/[A-F0-9]+\\.pdf",
+    "timeoutMs": 90000
   },
   {
     "id": "rsmssb",
@@ -122,7 +129,9 @@
     "name": "GPSC",
     "url": "https://gpsc.gujarat.gov.in/",
     "tier": 2,
-    "containerSelector": "main, #content, body"
+    "containerSelector": "main, #content, body",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "kvs",
@@ -138,7 +147,8 @@
     "url": "https://esic.gov.in/recruitments",
     "tier": 2,
     "useCurl": true,
-    "urlPattern": "/attachments/recruitmentfile/.+\\.pdf"
+    "urlPattern": "/attachments/recruitmentfile/.+\\.pdf",
+    "insecureTls": true
   },
   {
     "id": "epfo",
@@ -160,7 +170,9 @@
     "name": "DSSSB",
     "url": "https://dsssb.delhi.gov.in/circulars-orders-notifications/news",
     "tier": 2,
-    "urlPattern": "/sites/default/files/DSSSB/.+\\.pdf"
+    "urlPattern": "/sites/default/files/DSSSB/.+\\.pdf",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "rbi",
@@ -175,7 +187,9 @@
     "name": "NABARD",
     "url": "https://www.nabard.org/careernotices.aspx",
     "tier": 2,
-    "containerSelector": "main, #content, body"
+    "containerSelector": "main, #content, body",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "isro",
@@ -212,7 +226,9 @@
     "url": "https://careers.ntpc.co.in/recruitment/",
     "tier": 3,
     "urlPattern": "(careers\\.ntpc\\.co\\.in/recruitment/(advertisements|schedules|results)/|pdf_viewer\\.php\\?token=)",
-    "excludePattern": "Cut-off|cutoff|cut_off"
+    "excludePattern": "Cut-off|cutoff|cut_off",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "iocl",
@@ -227,7 +243,9 @@
     "name": "BHEL Careers",
     "url": "https://careers.bhel.in/index.jsp",
     "tier": 3,
-    "urlPattern": "careers\\.bhel\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/.+/login\\.html"
+    "urlPattern": "careers\\.bhel\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/.+/login\\.html",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "nta",
@@ -242,7 +260,8 @@
     "url": "https://rect.crpf.gov.in",
     "tier": 1,
     "insecureTls": true,
-    "urlPattern": "rect\\.crpf\\.gov\\.in/Upload/Recruitment/.+\\.pdf"
+    "urlPattern": "rect\\.crpf\\.gov\\.in/Upload/Recruitment/.+\\.pdf",
+    "useCurl": true
   },
   {
     "id": "nvs",
@@ -267,7 +286,7 @@
     "tier": 1,
     "renderJs": true,
     "disabled": true,
-    "notes": "UPSSSC's notification listing has each notice as <a href='AllNotifications.aspx' title='<full-text>'> \u2014 same href for every notice, with the unique title in the title attribute. Engine currently dedupes by href, so all notices collapse to one entry. Needs a 'dedupe by aria-label/title attribute' option to onboard."
+    "notes": "UPSSSC's notification listing has each notice as <a href='AllNotifications.aspx' title='<full-text>'> — same href for every notice, with the unique title in the title attribute. Engine currently dedupes by href, so all notices collapse to one entry. Needs a 'dedupe by aria-label/title attribute' option to onboard."
   },
   {
     "id": "mppsc",
@@ -317,7 +336,7 @@
     "url": "https://rectt.bsf.gov.in",
     "tier": 1,
     "disabled": true,
-    "notes": "BSF wraps all 15 recruitment PDF anchors inside <!-- HTML comments --> (balanced 16/16). Browsers and cheerio both treat them as comments \u2014 same issue as TNPSC. Re-enable when BSF un-comments active recruitments on the homepage."
+    "notes": "BSF wraps all 15 recruitment PDF anchors inside <!-- HTML comments --> (balanced 16/16). Browsers and cheerio both treat them as comments — same issue as TNPSC. Re-enable when BSF un-comments active recruitments on the homepage."
   },
   {
     "id": "cisf",
@@ -325,7 +344,7 @@
     "url": "https://cisfrectt.cisf.gov.in",
     "tier": 1,
     "disabled": true,
-    "notes": "cisfrectt.cisf.gov.in serves a JS-only fingerprint-verification page (custom bot detection). Even Playwright loads only the loader. Needs cookie-handshake replay (Fingerprint.start \u2192 /__verify/fp endpoint) to pass \u2014 currently out of scope. Try the parent www.cisf.gov.in/recruitment instead."
+    "notes": "cisfrectt.cisf.gov.in serves a JS-only fingerprint-verification page (custom bot detection). Even Playwright loads only the loader. Needs cookie-handshake replay (Fingerprint.start → /__verify/fp endpoint) to pass — currently out of scope. Try the parent www.cisf.gov.in/recruitment instead."
   },
   {
     "id": "itbp",
@@ -333,7 +352,8 @@
     "url": "https://recruitment.itbpolice.nic.in/rect/statics/news",
     "tier": 1,
     "insecureTls": true,
-    "urlPattern": "recruitment\\.itbpolice\\.nic\\.in/rect/noticeboards/downloadpdf/\\d+\\.pdf"
+    "urlPattern": "recruitment\\.itbpolice\\.nic\\.in/rect/noticeboards/downloadpdf/\\d+\\.pdf",
+    "useCurl": true
   },
   {
     "id": "aiims-delhi",
@@ -357,7 +377,7 @@
     "url": "https://www.rrbmumbai.gov.in/",
     "tier": 1,
     "disabled": true,
-    "notes": "rrbmumbai.gov.in returns hostname/cert mismatch. Even with ignoreHTTPSErrors + Playwright, homepage and /notice.php expose 0 recruitment PDFs and 0 digialm links \u2014 site has no current active CENs publicly listed. Re-investigate when RRB Mumbai posts new CENs (look for a /employment-notices analog)."
+    "notes": "rrbmumbai.gov.in returns hostname/cert mismatch. Even with ignoreHTTPSErrors + Playwright, homepage and /notice.php expose 0 recruitment PDFs and 0 digialm links — site has no current active CENs publicly listed. Re-investigate when RRB Mumbai posts new CENs (look for a /employment-notices analog)."
   },
   {
     "id": "rrb-kol",
@@ -372,7 +392,9 @@
     "name": "Indian Air Force (Agniveervayu)",
     "url": "https://agnipathvayu.cdac.in",
     "tier": 1,
-    "urlPattern": "agnipathvayu\\.cdac\\.in/AV/img/.+\\.pdf"
+    "urlPattern": "agnipathvayu\\.cdac\\.in/AV/img/.+\\.pdf",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "csbc",
@@ -395,7 +417,7 @@
     "url": "https://www.delhipolice.gov.in/recruitments.aspx",
     "tier": 2,
     "disabled": true,
-    "notes": "Delhi Police recruitments.aspx page shows only departmental docs (Citizen_Charter, DAR, Athletics) \u2014 no actual recruitment notifications. Per the xlsx note, Delhi Police hires via SSC (already monitored) + dept-specific channels. Use SSC + DSSSB (already monitored) instead."
+    "notes": "Delhi Police recruitments.aspx page shows only departmental docs (Citizen_Charter, DAR, Athletics) — no actual recruitment notifications. Per the xlsx note, Delhi Police hires via SSC (already monitored) + dept-specific channels. Use SSC + DSSSB (already monitored) instead."
   },
   {
     "id": "appsc",
@@ -411,7 +433,7 @@
     "url": "https://www.tgpsc.gov.in",
     "tier": 1,
     "disabled": true,
-    "notes": "TGPSC same as APPSC \u2014 Playwright finds 0 PDFs / notification anchors. SPA-driven with no scrapable listing endpoint. Re-investigate via DevTools API capture."
+    "notes": "TGPSC same as APPSC — Playwright finds 0 PDFs / notification anchors. SPA-driven with no scrapable listing endpoint. Re-investigate via DevTools API capture."
   },
   {
     "id": "opsc",
@@ -427,7 +449,8 @@
     "url": "https://afcat.cdac.in/AFCAT/",
     "tier": 2,
     "renderJs": true,
-    "urlPattern": "afcat\\.cdac\\.in/AFCAT/assets/images/news/.+"
+    "urlPattern": "afcat\\.cdac\\.in/AFCAT/assets/images/news/.+",
+    "timeoutMs": 90000
   },
   {
     "id": "hal",
@@ -490,7 +513,8 @@
     "tier": 1,
     "containerSelector": "main, #content, body",
     "urlPattern": "(rrbbnc\\.gov\\.in/notifications/.+\\.pdf|rrbbnc\\.gov\\.in/Notification/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
-    "insecureTls": true
+    "insecureTls": true,
+    "useCurl": true
   },
   {
     "id": "rrb-bpl",
@@ -531,7 +555,9 @@
     "url": "https://www.rrbjammu.nic.in/",
     "tier": 1,
     "containerSelector": "main, #content, body",
-    "urlPattern": "(rrbjammu\\.nic\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)"
+    "urlPattern": "(rrbjammu\\.nic\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "rrb-mld",
@@ -540,7 +566,8 @@
     "tier": 1,
     "containerSelector": "main, #content, body",
     "urlPattern": "(rrbmalda\\.gov\\.in/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
-    "insecureTls": true
+    "insecureTls": true,
+    "useCurl": true
   },
   {
     "id": "rrb-mfp",
@@ -557,7 +584,9 @@
     "url": "https://www.rrbpatna.gov.in/",
     "tier": 1,
     "containerSelector": "main, #content, body",
-    "urlPattern": "(rrbpatna\\.gov\\.in/Docs/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)"
+    "urlPattern": "(rrbpatna\\.gov\\.in/Docs/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "rrb-rnc",
@@ -573,7 +602,9 @@
     "url": "https://rrbsecunderabad.gov.in/",
     "tier": 1,
     "containerSelector": "main, #content, body",
-    "urlPattern": "(rrbsecunderabad\\.gov\\.in/wp-content/uploads/.+\\.pdf|digialm\\.com/EForms/configuredHtml/|cdn\\d+\\.digialm\\.com/OnlineAssessment)"
+    "urlPattern": "(rrbsecunderabad\\.gov\\.in/wp-content/uploads/.+\\.pdf|digialm\\.com/EForms/configuredHtml/|cdn\\d+\\.digialm\\.com/OnlineAssessment)",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "rrb-sgu",
@@ -591,7 +622,8 @@
     "tier": 1,
     "containerSelector": "main, #content, body",
     "urlPattern": "(rrbthiruvananthapuram\\.gov\\.in/assets/pdf/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
-    "useCurl": true
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "rrb-ajm",
@@ -609,14 +641,18 @@
     "url": "https://www.rrbgkp.gov.in/",
     "tier": 1,
     "containerSelector": "main, #content, body",
-    "urlPattern": "(rrbgkp\\.gov\\.in/(notices|Notices|Noticenew|results|Results)/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)"
+    "urlPattern": "(rrbgkp\\.gov\\.in/(notices|Notices|Noticenew|results|Results)/.+\\.pdf|digialm\\.com/EForms/configuredHtml/)",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "indian-navy",
     "name": "Indian Navy (Agniveer/Officers)",
     "url": "https://www.joinindiannavy.gov.in/",
     "tier": 1,
-    "urlPattern": "joinindiannavy\\.gov\\.in/files/Advt-.+\\.pdf"
+    "urlPattern": "joinindiannavy\\.gov\\.in/files/Advt-.+\\.pdf",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "ssb",
@@ -644,7 +680,9 @@
     "url": "https://joinindiancoastguard.cdac.in/cgept/",
     "tier": 1,
     "urlPattern": "joinindiancoastguard\\.cdac\\.in/cgept/assets/img/news/.+\\.pdf",
-    "titleFromUrl": true
+    "titleFromUrl": true,
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "icg-cgcat",
@@ -652,7 +690,9 @@
     "url": "https://joinindiancoastguard.cdac.in/cgcat/",
     "tier": 1,
     "urlPattern": "joinindiancoastguard\\.cdac\\.in/cgcat/assets/img/news/.+\\.pdf",
-    "titleFromUrl": true
+    "titleFromUrl": true,
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "assam-rifles",
@@ -668,7 +708,7 @@
     "url": "https://nsg.gov.in/media-centre/vacancies",
     "tier": 1,
     "disabled": true,
-    "notes": "NSG /media-centre/vacancies page renders a single \"Coming Soon\" panel \u2014 there are no public vacancy notifications on the website. NSG hires senior officers on deputation from Army/CAPFs (not via open recruitment). Re-investigate if NSG ever publishes direct intake notifications."
+    "notes": "NSG /media-centre/vacancies page renders a single \"Coming Soon\" panel — there are no public vacancy notifications on the website. NSG hires senior officers on deputation from Army/CAPFs (not via open recruitment). Re-investigate if NSG ever publishes direct intake notifications."
   },
   {
     "id": "mes",
@@ -676,7 +716,7 @@
     "url": "https://mes.gov.in/",
     "tier": 1,
     "disabled": true,
-    "notes": "mes.gov.in serves a 502 Bad Gateway on every URL tried (/, /career, /recruitment-cell, /recruitments). Server appears to be persistently down or behind a broken upstream. MES recruits Group-B/C posts via UPSC/SSC \u2014 already monitored. Re-enable when site comes back online."
+    "notes": "mes.gov.in serves a 502 Bad Gateway on every URL tried (/, /career, /recruitment-cell, /recruitments). Server appears to be persistently down or behind a broken upstream. MES recruits Group-B/C posts via UPSC/SSC — already monitored. Re-enable when site comes back online."
   },
   {
     "id": "maha-police",
@@ -700,14 +740,18 @@
     "url": "https://www.tnusrb.tn.gov.in/",
     "tier": 1,
     "urlPattern": "tnusrb\\.tn\\.gov\\.in/pdfs/(Notification|JR|CR|Open|Dept|Common|Police|Fire|Annual|Syllabus|FAQ).+\\.pdf",
-    "titleFromUrl": true
+    "titleFromUrl": true,
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "guj-police",
     "name": "Gujarat Police (GPRB)",
     "url": "https://gprb.gujarat.gov.in/advertisements.htm",
     "tier": 1,
-    "urlPattern": "gprb\\.gujarat\\.gov\\.in/advertisement-detail\\.htm\\?\\d+"
+    "urlPattern": "gprb\\.gujarat\\.gov\\.in/advertisement-detail\\.htm\\?\\d+",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "ts-police",
@@ -721,14 +765,18 @@
     "name": "AP Police (APSLPRB)",
     "url": "https://slprb.ap.gov.in/UI/recruitments.aspx",
     "tier": 1,
-    "urlPattern": "slprb\\.ap\\.gov\\.in/PDFS/.+\\.(pdf|PDF)"
+    "urlPattern": "slprb\\.ap\\.gov\\.in/PDFS/.+\\.(pdf|PDF)",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "hpsc",
     "name": "HPSC",
     "url": "https://hpsc.gov.in",
     "tier": 2,
-    "urlPattern": "Portals/0/.+\\.pdf"
+    "urlPattern": "Portals/0/.+\\.pdf",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "ppsc",
@@ -736,7 +784,8 @@
     "url": "https://ppsc.gov.in",
     "tier": 2,
     "useCurl": true,
-    "urlPattern": "/index\\.aspx\\?page=\\d+&tabid=10&tablinkid=\\d+"
+    "urlPattern": "/index\\.aspx\\?page=\\d+&tabid=10&tablinkid=\\d+",
+    "timeoutMs": 90000
   },
   {
     "id": "psssb",
@@ -744,7 +793,8 @@
     "url": "https://sssb.punjab.gov.in",
     "tier": 2,
     "useCurl": true,
-    "urlPattern": "sssb\\.punjab\\.gov\\.in/wp-content/uploads/.+\\.pdf"
+    "urlPattern": "sssb\\.punjab\\.gov\\.in/wp-content/uploads/.+\\.pdf",
+    "timeoutMs": 90000
   },
   {
     "id": "wbpsc",
@@ -752,7 +802,8 @@
     "url": "https://psc.wb.gov.in",
     "tier": 2,
     "useCurl": true,
-    "urlPattern": "Download\\?param1=.+&param2=advertisement"
+    "urlPattern": "Download\\?param1=.+&param2=advertisement",
+    "insecureTls": true
   },
   {
     "id": "gsssb",
@@ -760,7 +811,8 @@
     "url": "https://gsssb.gujarat.gov.in/Notification",
     "tier": 2,
     "renderJs": true,
-    "urlPattern": "AdvertisementsDetails\\?strdata="
+    "urlPattern": "AdvertisementsDetails\\?strdata=",
+    "timeoutMs": 90000
   },
   {
     "id": "osssc",
@@ -768,7 +820,7 @@
     "url": "https://www.osssc.gov.in/Public/OSSSC/Default.aspx",
     "tier": 2,
     "disabled": true,
-    "notes": "OSSSC homepage notifications use ASP.NET __doPostBack \u2014 every notice has the same href shape, only differing by control id (lnk_btn_UR_N). Engine dedupes by href, collapsing all notices to one entry. Same blocker as UPSSSC. Re-enable when scraper supports dedupe-by-text."
+    "notes": "OSSSC homepage notifications use ASP.NET __doPostBack — every notice has the same href shape, only differing by control id (lnk_btn_UR_N). Engine dedupes by href, collapsing all notices to one entry. Same blocker as UPSSSC. Re-enable when scraper supports dedupe-by-text."
   },
   {
     "id": "jkssb",
@@ -785,14 +837,17 @@
     "tier": 2,
     "renderJs": true,
     "urlPattern": "/notices/.+",
-    "excludePattern": "/notices/(advertisements|other-notices)$"
+    "excludePattern": "/notices/(advertisements|other-notices)$",
+    "timeoutMs": 90000
   },
   {
     "id": "cg-vyapam",
     "name": "CG Vyapam",
     "url": "https://vyapamcg.cgstate.gov.in",
     "tier": 2,
-    "urlPattern": "vyapamcg\\.cgstate\\.gov\\.in/uploads/(pdfs|menus/files)/.+\\.pdf"
+    "urlPattern": "vyapamcg\\.cgstate\\.gov\\.in/uploads/(pdfs|menus/files)/.+\\.pdf",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "uksssc",
@@ -807,7 +862,7 @@
     "url": "https://hpsssb.hp.gov.in",
     "tier": 2,
     "disabled": true,
-    "notes": "hpsssb.hp.gov.in returns 404 for /, /Default.aspx, /index/index, /HPSSSB/, /Index.aspx \u2014 the entire site appears to have been decommissioned or migrated. Re-investigate by tracking down the new HP SSC URL (may have moved under hpssc.hp.gov.in or similar)."
+    "notes": "hpsssb.hp.gov.in returns 404 for /, /Default.aspx, /index/index, /HPSSSB/, /Index.aspx — the entire site appears to have been decommissioned or migrated. Re-investigate by tracking down the new HP SSC URL (may have moved under hpssc.hp.gov.in or similar)."
   },
   {
     "id": "mp-esb",
@@ -836,7 +891,8 @@
     "url": "https://psc.cg.gov.in/Advertisement.php",
     "tier": 2,
     "renderJs": true,
-    "urlPattern": "PDFs/advertisement/.+\\.pdf"
+    "urlPattern": "PDFs/advertisement/.+\\.pdf",
+    "timeoutMs": 90000
   },
   {
     "id": "ukpsc",
@@ -861,14 +917,17 @@
     "tier": 2,
     "useCurl": true,
     "titleFromUrl": true,
-    "urlPattern": "mpscmanipur\\.gov\\.in/files/.+\\.pdf"
+    "urlPattern": "mpscmanipur\\.gov\\.in/files/.+\\.pdf",
+    "insecureTls": true
   },
   {
     "id": "nagaland-psc",
     "name": "Nagaland PSC",
     "url": "https://npsc.nagaland.gov.in/advertisement",
     "tier": 2,
-    "urlPattern": "npsc\\.nagaland\\.gov\\.in/advertisement/\\d+"
+    "urlPattern": "npsc\\.nagaland\\.gov\\.in/advertisement/\\d+",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "meghalaya-psc",
@@ -882,7 +941,9 @@
     "name": "Tripura PSC",
     "url": "https://tpsc.tripura.gov.in",
     "tier": 2,
-    "urlPattern": "tpsc\\.tripura\\.gov\\.in/sites/default/files/.+\\.pdf"
+    "urlPattern": "tpsc\\.tripura\\.gov\\.in/sites/default/files/.+\\.pdf",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "arunachal-psc",
@@ -897,14 +958,17 @@
     "url": "https://spsc.sikkim.gov.in/Advertisement.html",
     "tier": 2,
     "useCurl": true,
-    "urlPattern": "spsc\\.sikkim\\.gov\\.in/Advertisements/.+\\.pdf"
+    "urlPattern": "spsc\\.sikkim\\.gov\\.in/Advertisements/.+\\.pdf",
+    "insecureTls": true
   },
   {
     "id": "mizoram-psc",
     "name": "Mizoram PSC",
     "url": "https://mpsc.mizoram.gov.in/page/advertisement-2026-2027",
     "tier": 2,
-    "urlPattern": "mpsc\\.mizoram\\.gov\\.in/uploads/attachments/.+\\.pdf"
+    "urlPattern": "mpsc\\.mizoram\\.gov\\.in/uploads/attachments/.+\\.pdf",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "goa-psc",
@@ -921,7 +985,8 @@
     "url": "https://apsc.nic.in/advt_2026.php",
     "tier": 2,
     "useCurl": true,
-    "urlPattern": "(advt_\\d{4}|notif_\\d{4}|misc_\\d{4})/.+\\.pdf"
+    "urlPattern": "(advt_\\d{4}|notif_\\d{4}|misc_\\d{4})/.+\\.pdf",
+    "timeoutMs": 90000
   },
   {
     "id": "upsc-online",
@@ -945,7 +1010,7 @@
     "url": "https://csirhrdg.res.in/Home/Index/1/Default/3360/151",
     "tier": 2,
     "disabled": true,
-    "notes": "CSIR HRDG /Notice page hosts only fellowship-administration OMs (transfers, contingency-claim formats, fellowship guidelines) \u2014 not direct recruitment ads. The fellowship intake itself is via JRF-NET (NTA-conducted) and JRF-GATE, both already covered by the 'nta' source. Re-enable if HRDG starts publishing direct recruitment for HRDG cadre staff."
+    "notes": "CSIR HRDG /Notice page hosts only fellowship-administration OMs (transfers, contingency-claim formats, fellowship guidelines) — not direct recruitment ads. The fellowship intake itself is via JRF-NET (NTA-conducted) and JRF-GATE, both already covered by the 'nta' source. Re-enable if HRDG starts publishing direct recruitment for HRDG cadre staff."
   },
   {
     "id": "bel",
@@ -994,7 +1059,9 @@
     "name": "PGCIL (Powergrid)",
     "url": "https://www.powergrid.in/job-opportunities",
     "tier": 3,
-    "urlPattern": "powergrid\\.in/sites/default/files/job_opportunities_document/.+\\.pdf"
+    "urlPattern": "powergrid\\.in/sites/default/files/job_opportunities_document/.+\\.pdf",
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "bsnl",
@@ -1018,7 +1085,8 @@
     "url": "https://jipmer.edu.in/jobs",
     "tier": 2,
     "useCurl": true,
-    "urlPattern": "/announcement/.+(recruitment|nursing|junior-resident|technician|gr-b-c|advt|vacancy)"
+    "urlPattern": "/announcement/.+(recruitment|nursing|junior-resident|technician|gr-b-c|advt|vacancy)",
+    "insecureTls": true
   },
   {
     "id": "nhm",
@@ -1026,7 +1094,7 @@
     "url": "https://nhm.gov.in",
     "tier": 2,
     "disabled": true,
-    "notes": "Central nhm.gov.in is policy/programme content only \u2014 no Recruitment, Vacancy, Career, or Notice anchors of any kind. NHM hires happen through state-level NHM portals (UP NRHM, Bihar SHS, MP NHM etc.), each with its own URL. Treat NHM as a parent ministry; track state-NHM portals separately if needed."
+    "notes": "Central nhm.gov.in is policy/programme content only — no Recruitment, Vacancy, Career, or Notice anchors of any kind. NHM hires happen through state-level NHM portals (UP NRHM, Bihar SHS, MP NHM etc.), each with its own URL. Treat NHM as a parent ministry; track state-NHM portals separately if needed."
   },
   {
     "id": "ncert",
@@ -1070,7 +1138,7 @@
     "linkField": "newsUrl",
     "dateField": "created",
     "stripQuery": true,
-    "notes": "NCS publishes a 'What's New' news feed at the betacloud subdomain. Server returns XML when Accept: text/html is sent (default), so we force Accept: application/json via useCurl + headers. newsUrl is a presigned Azure blob URL \u2014 stripQuery dedupes when the SAS token rotates."
+    "notes": "NCS publishes a 'What's New' news feed at the betacloud subdomain. Server returns XML when Accept: text/html is sent (default), so we force Accept: application/json via useCurl + headers. newsUrl is a presigned Azure blob URL — stripQuery dedupes when the SAS token rotates."
   },
   {
     "id": "employment-news",
@@ -1088,7 +1156,12 @@
     "tier": 2,
     "type": "sitemap",
     "useCurl": true,
-    "urlPattern": "^https://www\\.sarkariresult\\.com/20\\d{2}/[^/]+/?$",
-    "notes": "Third-party aggregator (not an official govt site). Fetched via sitemap.xml; we keep only year-prefixed slugs (/{YYYY}/{slug}/) which correspond to actual posting pages and drop pagination/category routes. Bootstraps ~1500 historical entries; new postings notify thereafter."
+    "urlPattern": "^https?://(?:www\\.)?sarkariresult\\.com/20\\d{2}/[^/]+/?$",
+    "notes": "Third-party aggregator (not an official govt site). Fetched via sitemap.xml; we keep only year-prefixed slugs (/{YYYY}/{slug}/) which correspond to actual posting pages and drop pagination/category routes. Bootstraps ~1500 historical entries; new postings notify thereafter.",
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15",
+      "Accept": "application/xml,text/xml,application/xhtml+xml,*/*;q=0.8",
+      "Accept-Language": "en-US,en;q=0.9"
+    }
   }
 ]
