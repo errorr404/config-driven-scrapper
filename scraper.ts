@@ -21,6 +21,16 @@ import "dotenv/config";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+
+// Prefix every console line with an ISO timestamp so cron-tailed logs are readable.
+// Blank lines stay blank — they're used as visual separators in pass output.
+for (const method of ["log", "error", "warn"] as const) {
+  const original = console[method].bind(console);
+  console[method] = (...args: unknown[]) => {
+    if (args.length === 1 && args[0] === "") return original("");
+    original(`[${new Date().toISOString()}]`, ...args);
+  };
+}
 import { extract, dedupeKey } from "./src/extract.js";
 import { fetchPage, closeBrowser } from "./src/fetch.js";
 import { pool } from "./src/pool.js";
@@ -102,7 +112,7 @@ async function main() {
   const state = loadState();
 
   console.log(
-    `[${new Date().toISOString()}] Checking ${sources.length} sources${skipped ? ` (${skipped} disabled)` : ""}…`,
+    `Checking ${sources.length} sources${skipped ? ` (${skipped} disabled)` : ""}…`,
   );
   const passStart = Date.now();
 
@@ -136,8 +146,9 @@ async function main() {
   const withNew = results.filter((r) => r.added.length > 0);
   const newCount = withNew.reduce((acc, r) => acc + r.added.length, 0);
 
+  console.log("");
   console.log(
-    `\nPass complete in ${(passMs / 1000).toFixed(1)}s — ${results.length} sources, ${errored} errored, ${newCount} new links across ${withNew.length} sources.`,
+    `Pass complete in ${(passMs / 1000).toFixed(1)}s — ${results.length} sources, ${errored} errored, ${newCount} new links across ${withNew.length} sources.`,
   );
 
   if (withNew.length === 0) {
