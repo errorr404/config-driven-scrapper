@@ -908,7 +908,8 @@
     "url": "https://hppsc.hp.gov.in/CommonControls/ViewContinuousLinkPage?qs=mhlKjiXMMItGo46f60VBXX8%2B1SQ83OzVLj9MfDScpvboDSdMygkK4iLV47Bu%2FJzMpJLanI%2BihrK9p8W6JsSQUgHTy39NyiuO%2BFtbEmiPQyc%3D",
     "tier": 2,
     "renderJs": true,
-    "urlPattern": "CMSFileView\\?qs="
+    "urlPattern": "CMSFileView\\?qs=",
+    "timeoutMs": 90000
   },
   {
     "id": "manipur-psc",
