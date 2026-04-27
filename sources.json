@@ -89,9 +89,10 @@
     "name": "RPSC",
     "url": "https://rpsc.rajasthan.gov.in/advertisements",
     "tier": 1,
-    "renderJs": true,
     "urlPattern": "Static/RecruitmentAdvertisements/[A-F0-9]+\\.pdf",
-    "timeoutMs": 90000
+    "timeoutMs": 90000,
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "rsmssb",
@@ -837,10 +838,11 @@
     "name": "JSSC",
     "url": "https://jssc.jharkhand.gov.in",
     "tier": 2,
-    "renderJs": true,
     "urlPattern": "/notices/.+",
     "excludePattern": "/notices/(advertisements|other-notices)$",
-    "timeoutMs": 90000
+    "timeoutMs": 90000,
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "cg-vyapam",
@@ -894,9 +896,10 @@
     "name": "CGPSC",
     "url": "https://psc.cg.gov.in/Advertisement.php",
     "tier": 2,
-    "renderJs": true,
     "urlPattern": "PDFs/advertisement/.+\\.pdf",
-    "timeoutMs": 90000
+    "timeoutMs": 90000,
+    "useCurl": true,
+    "insecureTls": true
   },
   {
     "id": "ukpsc",

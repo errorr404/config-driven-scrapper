@@ -131,6 +131,15 @@ async function getBrowser(): Promise<any> {
 async function fetchWithPlaywright(source: SourceConfig): Promise<string> {
   const browser = await getBrowser();
   const ctx = await browser.newContext({ userAgent: USER_AGENT });
+  // We only need the DOM to extract anchors — block visual subresources to keep
+  // domcontentloaded from blocking on slow CDN images/fonts/CSS on flaky govt servers.
+  await ctx.route("**/*", (route) => {
+    const t = route.request().resourceType();
+    if (t === "image" || t === "media" || t === "font" || t === "stylesheet") {
+      return route.abort();
+    }
+    return route.continue();
+  });
   const page = await ctx.newPage();
   try {
     await page.goto(source.url, {
